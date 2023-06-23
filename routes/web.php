@@ -22,3 +22,11 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/test-fe', function () {
+    return view('layouts.shop');
+});
+
+Route::get('/logintest', function () {
+    return view('auth.logintest');
+});
