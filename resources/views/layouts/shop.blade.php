@@ -27,8 +27,8 @@
                 <div class="container flex-lg-row flex-nowrap align-items-center">
                     <div class="navbar-brand w-100">
                         <a href="./index.html">
-                            <img src="{{ asset('assets/fe//img/logo-purple.png') }}"
-                                srcset="{{ asset('assets/fe//img/logo-purple@2x.png') }} 2x" alt="" />
+                            <img src="{{ asset('assets/fe/img/logo-purple.png') }}"
+                                srcset="{{ asset('assets/fe/img/logo-purple@2x.png') }} 2x" alt="" />
                         </a>
                     </div>
                     <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
@@ -48,8 +48,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo1.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi1.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi1@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi1.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi1@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo I</span>
                                                     </a>
@@ -57,8 +57,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo2.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi2.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi2@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi2.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi2@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo II</span>
                                                     </a>
@@ -66,8 +66,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo3.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi3.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi3@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi3.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi3@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo III</span>
                                                     </a>
@@ -75,8 +75,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo4.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi4.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi4@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi4.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi4@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo IV</span>
                                                     </a>
@@ -84,8 +84,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo5.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi5.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi5@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi5.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi5@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo V</span>
                                                     </a>
@@ -93,8 +93,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo6.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi6.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi6@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi6.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi6@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo VI</span>
                                                     </a>
@@ -102,8 +102,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo7.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi7.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi7@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi7.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi7@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo VII</span>
                                                     </a>
@@ -111,8 +111,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo8.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi8.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi8@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi8.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi8@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo VIII</span>
                                                     </a>
@@ -120,8 +120,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo9.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi9.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi9@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi9.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi9@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo IX</span>
                                                     </a>
@@ -129,8 +129,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo10.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi10.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi10@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi10.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi10@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo X</span>
                                                     </a>
@@ -138,8 +138,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo11.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi11.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi11@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi11.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi11@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XI</span>
                                                     </a>
@@ -147,8 +147,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo12.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi12.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi12@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi12.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi12@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XII</span>
                                                     </a>
@@ -156,8 +156,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo13.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi13.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi13@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi13.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi13@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XIII</span>
                                                     </a>
@@ -165,8 +165,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo14.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi14.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi14@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi14.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi14@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XIV</span>
                                                     </a>
@@ -174,8 +174,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo15.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi15.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi15@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi15.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi15@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XV</span>
                                                     </a>
@@ -183,8 +183,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo16.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi16.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi16@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi16.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi16@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XVI</span>
                                                     </a>
@@ -192,8 +192,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo17.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi17.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi17@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi17.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi17@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XVII</span>
                                                     </a>
@@ -201,8 +201,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo18.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi18.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi18@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi18.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi18@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XVIII</span>
                                                     </a>
@@ -210,8 +210,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo19.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi19.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi19@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi19.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi19@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XIX</span>
                                                     </a>
@@ -219,8 +219,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo20.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi20.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi20@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi20.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi20@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XX</span>
                                                     </a>
@@ -228,8 +228,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo21.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi21.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi21@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi21.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi21@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XXI</span>
                                                     </a>
@@ -237,8 +237,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo22.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi22.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi22@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi22.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi22@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XXII</span>
                                                     </a>
@@ -246,8 +246,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo23.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi23.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi23@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi23.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi23@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XXIII</span>
                                                     </a>
@@ -255,8 +255,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo24.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi24.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi24@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi24.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi24@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XXIV</span>
                                                     </a>
@@ -264,8 +264,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo25.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi25.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi25@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi25.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi25@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XXV</span>
                                                     </a>
@@ -273,8 +273,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo26.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi26.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi26@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi26.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi26@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XXVI</span>
                                                     </a>
@@ -282,8 +282,8 @@
                                                 <li class="col">
                                                     <a class="dropdown-item" href="./demo27.html">
                                                         <figure class="rounded lift d-none d-lg-block"><img
-                                                                src="{{ asset('assets/fe//img/demos/mi27.jpg') }}"
-                                                                srcset="{{ asset('assets/fe//img/demos/mi27@2x.jpg') }} 2x"
+                                                                src="{{ asset('assets/fe/img/demos/mi27.jpg') }}"
+                                                                srcset="{{ asset('assets/fe/img/demos/mi27@2x.jpg') }} 2x"
                                                                 alt="" /></figure>
                                                         <span class="d-lg-none">Demo XXVII</span>
                                                     </a>
@@ -460,7 +460,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/about.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block1.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block1.svg') }}"
                                                                 alt="" /></div>
                                                         <span>About</span>
                                                     </a>
@@ -469,7 +469,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/blog.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block2.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block2.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Blog</span>
                                                     </a>
@@ -478,7 +478,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/call-to-action.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block3.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block3.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Call to Action</span>
                                                     </a>
@@ -487,7 +487,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/clients.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block4.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block4.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Clients</span>
                                                     </a>
@@ -496,7 +496,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/contact.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block5.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block5.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Contact</span>
                                                     </a>
@@ -505,7 +505,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/facts.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block6.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block6.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Facts</span>
                                                     </a>
@@ -514,7 +514,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/faq.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block7.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block7.svg') }}"
                                                                 alt="" /></div>
                                                         <span>FAQ</span>
                                                     </a>
@@ -523,7 +523,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/features.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block8.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block8.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Features</span>
                                                     </a>
@@ -532,7 +532,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/footer.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block9.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block9.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Footer</span>
                                                     </a>
@@ -541,7 +541,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/hero.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block10.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block10.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Hero</span>
                                                     </a>
@@ -550,7 +550,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/misc.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block17.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block17.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Misc</span>
                                                     </a>
@@ -559,7 +559,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/navbar.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block11.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block11.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Navbar</span>
                                                     </a>
@@ -568,7 +568,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/portfolio.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block12.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block12.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Portfolio</span>
                                                     </a>
@@ -577,7 +577,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/pricing.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block13.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block13.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Pricing</span>
                                                     </a>
@@ -586,7 +586,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/process.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block14.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block14.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Process</span>
                                                     </a>
@@ -595,7 +595,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/team.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block15.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block15.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Team</span>
                                                     </a>
@@ -604,7 +604,7 @@
                                                     <a class="dropdown-item" href="./docs/blocks/testimonials.html">
                                                         <div class="rounded img-svg d-none d-lg-block p-4 mb-lg-2"><img
                                                                 class="rounded-0"
-                                                                src="{{ asset('assets/fe//img/demos/block16.svg') }}"
+                                                                src="{{ asset('assets/fe/img/demos/block16.svg') }}"
                                                                 alt="" /></div>
                                                         <span>Testimonials</span>
                                                     </a>
@@ -804,8 +804,8 @@
             <div class="row gy-6 gy-lg-0">
                 <div class="col-md-4 col-lg-3">
                     <div class="widget">
-                        <img class="mb-4" src="{{ asset('assets/fe//img/logo-light.png') }}"
-                            srcset="{{ asset('assets/fe//img/logo-light.png') }} 2x" alt="" />
+                        <img class="mb-4" src="{{ asset('assets/fe/img/logo-light.png') }}"
+                            srcset="{{ asset('assets/fe/img/logo-light.png') }} 2x" alt="" />
                         <p class="mb-4">© 2022 Sandbox. <br class="d-none d-lg-block" />All rights reserved.</p>
                         <nav class="nav social social-white">
                             <a href="#"><i class="uil uil-twitter"></i></a>
@@ -851,7 +851,7 @@
                             <!-- Begin Mailchimp Signup Form -->
                             <div id="mc_embed_signup2">
                                 <form
-                                    action="https://elemisfreebies.us20.list-manage.com/subscribe/post?u=aa4947f70a475ce162057838d&amp;id=b49ef47a9a"
+                                    action="https:/elemisfreebies.us20.list-manage.com/subscribe/post?u=aa4947f70a475ce162057838d&amp;id=b49ef47a9a"
                                     method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form"
                                     class="validate dark-fields" target="_blank" novalidate>
                                     <div id="mc_embed_signup_scroll2">
@@ -894,7 +894,7 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
-    <script src="{{ asset('assets/fe//js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/fe//js/theme.js') }}"></script>
+    <script src="{{ asset('assets/fe/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/fe/js/theme.js') }}"></script>
 
 </body>
