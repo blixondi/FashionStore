@@ -49,14 +49,36 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'fname' => ['required', 'string', 'max:255'],
-            'lname' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required','min:10','max:13'],
-        ]);
+        return Validator::make(
+            $data,
+            [
+                'username' => ['required', 'string', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'fname' => ['required', 'string', 'max:255'],
+                'lname' => ['required', 'string', 'max:255'],
+                'phone_number' => ['required', 'min:10', 'max:13'],
+            ],
+            [
+                'username.required' => "Username wajib diisi.",
+                'username.unique' => "Username sudah terpakai.",
+
+                'password.required' => "Password wajib diisi.",
+                'password.min' => 'Password minimal 8 karakter.',
+                'password.confirmed' => 'Password tidak sama.',
+
+                'email.required' => 'E-mail wajib diisi.',
+                'email.unique' => "Email sudah terpakai.",
+
+                'fname.required' => 'Nama depan wajib diisi.',
+                'lname.required' => 'Nama belakang wajib diisi.',
+
+                'phone_number.required' => 'Nomor telepon wajib diisi.',
+                'phone_number.min' => 'Nomor telepon harus 10 hingga 13 karakter',
+                'phone_number.max' => 'Nomor telepon harus 10 hingga 13 karakter'
+
+            ]
+        );
     }
 
     /**
