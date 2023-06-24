@@ -772,7 +772,17 @@
                                 </li>
                             @else
                                 <li class="nav-item d-none d-md-block">
-                                    <a href="{{ route('logout') }}" class="btn btn-primary rounded-pill">Logout</a>
+                                    <h6>Halo, {{ Auth::user()->fname }}</h6>
+                                </li>
+                                <li class="nav-item d-none d-md-block">
+                                    <a href="{{ route('logout') }}" class="btn btn-primary rounded-pill"
+                                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none" hidden>
+                                        @csrf
+                                    </form>
                                 </li>
                                 <li class="nav-item d-lg-none">
                                     <button class="hamburger offcanvas-nav-btn"><span></span></button>
