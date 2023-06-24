@@ -27,8 +27,8 @@
                 <div class="container flex-lg-row flex-nowrap align-items-center">
                     <div class="navbar-brand w-100">
                         <a href="./index.html">
-                            <img src="{{ asset('assets/fe/img/logo-purple.png') }}"
-                                srcset="{{ asset('assets/fe/img/logo-purple@2x.png') }} 2x" alt="" />
+                            <img src="{{ asset('assets/fe/img/FS-sm.png') }}"
+                                srcset="{{ asset('assets/fe/img/FS-lg.png') }} 2x" alt="" />
                         </a>
                     </div>
                     <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
