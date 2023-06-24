@@ -809,7 +809,7 @@
     </div>
 
     <!--Footer-->
-    <footer class="bg-dark text-inverse">
+    <footer class="bg-dark text-inverse mt-5">
         <div class="container py-13 py-md-15">
             <div class="row gy-6 gy-lg-0">
                 <div class="col-md-4 col-lg-3">
