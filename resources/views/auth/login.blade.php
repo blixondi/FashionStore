@@ -1,19 +1,19 @@
 @extends('layouts.shop')
 
-@section('title', 'Login')
+@section('title', 'Login | FashionStore')
 
 @section('content')
 
     <section class="wrapper image-wrapper bg-image bg-overlay bg-overlay-light-600 text-white"
-        data-image-src="{{ asset('assets/fe//img/photos/bg18.png') }}">
+        data-image-src="{{ asset('assets/fe/img/photos/bg18.png') }}">
         <div class="container pt-17 pb-20 pt-md-19 pb-md-21 text-center">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h1 class="display-1 mb-3">Sign In</h1>
+                    <h1 class="display-1 mb-3">Login</h1>
                     <nav class="d-inline-block" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Sign In</li>
+                            <li class="breadcrumb-item active" aria-current="page">Login</li>
                         </ol>
                     </nav>
                     <!-- /nav -->
@@ -31,15 +31,15 @@
                 <div class="col-lg-7 col-xl-6 col-xxl-5 mx-auto mt-n20">
                     <div class="card">
                         <div class="card-body p-11 text-center">
-                            <h2 class="mb-3 text-start">Welcome Back</h2>
-                            <p class="lead mb-6 text-start">Fill your email and password to sign in.</p>
+                            <h2 class="mb-3 text-start">Selamat Datang</h2>
+                            <p class="lead mb-6 text-start">Gunakan username & password untuk login</p>
                             <form class="text-start mb-3" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-floating mb-4">
                                     <input id="username" type="text"
                                         class="form-control @error('username') is-invalid @enderror" name="username"
-                                        value="{{ old('username') }}" required autocomplete="username" autofocus>
-                                    <label for="loginEmail">Username</label>
+                                        value="{{ old('username') }}" required autocomplete="username" autofocus id='loginUsername' placeholder="Username">
+                                    <label for="loginUsername">Username</label>
 
                                     @error('username')
                                         <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                                 <div class="form-floating password-field mb-4">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
+                                        required autocomplete="current-password" placeholder="Password">
                                     <span class="password-toggle"><i class="uil uil-eye"></i></span>
                                     <label for="loginPassword">Password</label>
 
@@ -67,8 +67,8 @@
                                 </button>
                             </form>
                             <!-- /form -->
-                            <p class="mb-0">Don't have an account? <a href="{{ route('register') }}" class="hover">Sign
-                                    up</a></p>
+                            <p class="mb-0">Belum punya akun? <a href="{{ route('register') }}" class="hover">Buat disini
+                                </a></p>
                         </div>
                         <!--/.card-body -->
                     </div>
