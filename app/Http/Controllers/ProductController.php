@@ -12,11 +12,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index_pria()
     {
-        //
+        $product = Product::where('categories_id',1)->get();
+        dd($product);
     }
 
+    public function index_wanita()
+    {
+        $product = Product::where('categories_id',2)->get();
+        dd($product);
+    }
+
+    public function index_anak()
+    {
+        $product = Product::where('categories_id',3)->get();
+        dd($product);
+    }
     /**
      * Show the form for creating a new resource.
      *
