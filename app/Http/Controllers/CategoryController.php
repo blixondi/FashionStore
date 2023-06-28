@@ -14,9 +14,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
-    }
 
+    }
+    public function indexadmin()
+    {
+        $category = Category::all();
+        return view('admin.admincategory',compact('category'));
+    }
     /**
      * Show the form for creating a new resource.
      *

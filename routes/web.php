@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,8 +26,12 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function(){
-    return view('adminhome');
+    return view('admin.adminhome');
 });
+Route::get('/admin/category',[CategoryController::class,'indexadmin'])->name('admcategory.index');
+Route::get('/admin/product',[ProductController::class,'indexadmin'])->name('admproduct.index');
+Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.index');
+
 
 Route::get('/pria',[ProductController::class, 'index_pria']);
 Route::get('/wanita',[ProductController::class, 'index_wanita']);

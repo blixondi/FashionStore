@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
+use function PHPSTORM_META\type;
+
 class TypeController extends Controller
 {
     /**
@@ -16,8 +18,13 @@ class TypeController extends Controller
     {
         //
     }
+    public function indexadmin()
+    {
+        $type = Type::all();
+        return view('admin.admintype',compact('type'));
+    }
 
-    /**
+        /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

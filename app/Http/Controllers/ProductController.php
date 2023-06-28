@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -28,6 +30,15 @@ class ProductController extends Controller
     {
         $product = Product::where('categories_id',3)->get();
         dd($product);
+    }
+
+    public function indexadmin(){
+        // $product = Product::with('category','type')->get();
+        $product = DB::select(DB::raw('SELECT p.id,p.categories_id,c.name as category ,t.name as type,p.name,p.brand,p.price,p.dimension,p.description,p.img_url,p.updated_at,p.created_at
+        FROM products p INNER JOIN categories c on p.categories_id = c.id
+        INNER JOIN types t ON p.types_id = t.id'));
+        $category = Category::all();
+        return view('admin.adminproduct',compact('product','category'));
     }
     /**
      * Show the form for creating a new resource.
