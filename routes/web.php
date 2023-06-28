@@ -20,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('layouts.admin');
+    return view('home');
+});
+
+Route::get('/admin', function(){
+    return view('adminhome');
 });
 
 Route::get('/pria',[ProductController::class, 'index_pria']);
