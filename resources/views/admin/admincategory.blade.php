@@ -39,12 +39,12 @@
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-primary rounded-3 fw-semibold">{{$c->created_at}}</span>
+                                        <span class="badge bg-success rounded-3 fw-semibold">{{$c->created_at}}</span>
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-primary rounded-3 fw-semibold">{{$c->updated_at}}</span>
+                                        <span class="badge bg-secondary rounded-3 fw-semibold">{{$c->updated_at}}</span>
                                     </div>
                                 </td>
                             </tr>

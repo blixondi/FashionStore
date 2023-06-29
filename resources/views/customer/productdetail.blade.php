@@ -1,0 +1,127 @@
+@extends('layouts.shop')
+@section('content')
+<section class="wrapper bg-gray">
+    <section class="wrapper bg-gray">
+        <div class="container py-3 py-md-5">
+          <nav class="d-inline-block" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('custproduct.index')}}">Shop</a></li>
+              <li class="breadcrumb-item"><a href="#">{{$product->category->name}}</a></li>
+              <li class="breadcrumb-item active text-muted" aria-current="page">{{$product->name}}</li>
+            </ol>
+          </nav>
+          <!-- /nav -->
+        </div>
+        <!-- /.container -->
+      </section>
+      <!-- /section -->
+      <section class="wrapper bg-light">
+        <div class="container py-14 py-md-16">
+          <div class="row gx-md-8 gx-xl-12 gy-8">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                      <section class="wrapper image-wrapper bg-image bg-cover text-white" data-image-src="{{asset("/assets/img/products/".$product->img_url)}}">
+                      {{-- <section class="wrapper image-wrapper bg-image bg-cover text-white" data-image-src=""> --}}
+                        <div class="container py-14 py-md-21">
+                        </div>
+                        <!-- /.container -->
+                      </section>
+                      <!-- /section -->
+                    </div>
+                    <!--/.card-body -->
+                    
+                    <!--/.card-footer -->
+                  </div>
+              <!-- /.swiper-container -->
+            </div>
+            <!-- /column -->
+            <div class="col-lg-6">
+              <div class="post-header mb-5">
+                <h2 class="post-title display-5"><a href="./shop-product.html" class="link-dark">{{Str::ucfirst($product->name)}}</a></h2>
+                <h4 class="post-title display-6"><a href="./shop-product.html" class="link-dark">{{$product->category->name}}</a></h4>
+                <h4 class="post-title display-8"><a href="./shop-product.html" class="link-dark">{{$product->type->name}}</a></h4>
+                <p class="price fs-20 mb-2"><span class="amount">@currency($product->price)</span></p>
+              </div>
+              <!-- /.post-header -->
+              <p class="mb-6">{{$product->description}}</p>
+              <form method="POST">
+                <fieldset class="picker">
+                  <legend class="h6 fs-16 text-body mb-3">Choose a size</legend>
+                  <label for="size-xs">
+                    <input type="radio" name="sizes" id="size-xs" checked>
+                    <span>XS</span>
+                  </label>
+                  <label for="size-s">
+                    <input type="radio" name="sizes" id="size-s">
+                    <span>S</span>
+                  </label>
+                  <label for="size-m">
+                    <input type="radio" name="sizes" id="size-m">
+                    <span>M</span>
+                  </label>
+                  <label for="size-l">
+                    <input type="radio" name="sizes" id="size-l">
+                    <span>L</span>
+                  </label>
+                  <label for="size-xl">
+                    <input type="radio" name="sizes" id="size-xl">
+                    <span>XL</span>
+                  </label>
+                </fieldset>
+              </form>
+                <div class="row">
+                  <div class="col-lg-9 d-flex flex-row pt-2">
+                    <div>
+                      <div class="form-floating">
+                        <input id="txtQty" type="number" class="form-control" placeholder="Text Input">
+                        <label for="textInputExample">Quantity</label>
+                      </div>
+                      <!--/.form-select-wrapper -->
+                    </div>
+                    <div class="flex-grow-1 mx-2">
+                      <button class="btn btn-primary btn-icon btn-icon-start rounded w-100 flex-grow-1" id="btn-addcart" data-id="{{$product->id}}"><i class="uil uil-shopping-bag"></i> Add to Cart</button>
+                    </div>
+                    <div>
+                      <button class="btn btn-block btn-red btn-icon rounded px-3 w-100 h-100"><i class="uil uil-heart"></i></button>
+                    </div>
+                  </div>
+                  <!-- /column -->
+                </div>
+                <!-- /.row -->
+              <!-- /form -->
+            </div>
+            <!-- /column -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container -->
+      </section>
+      <!-- /section -->
+
+    </div>
+@endsection
+@section('js')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+            $("#btn-addcart").on("click", function(){
+                let id = $(this).attr("data-id");
+                let quantity = $(".txtQty").attr('value');
+                $.post(
+                    "{{url('product/addcart')}}" + "/" + id,
+                    {
+                        _token: "{{ csrf_token() }}",
+                        qty: quantity,
+                    },
+                    function(data){
+                        if(data.status == "oke"){
+                            alert(data.message);
+                        }
+                    }
+                )
+            });
+        });
+    </script>
+@endsection

@@ -11,12 +11,12 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,"categories_id");
     }
 
     public function type()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class,"types_id");
     }
     // protected $tablename = 'products';
 }

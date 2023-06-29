@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Auth;
@@ -36,3 +37,9 @@ Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.in
 Route::get('/pria',[ProductController::class, 'index_pria']);
 Route::get('/wanita',[ProductController::class, 'index_wanita']);
 Route::get('/anak',[ProductController::class, 'index_anak']);
+
+Route::resource('/product',ProductController::class);
+Route::get('/product',[ProductController::class,'indexcustomer'])->name('custproduct.index');
+Route::post("/product/addcart/{product}",[ProductController::class,"addcart"]);
+
+Route::get('/cart',[CustomerController::class,"cart"]);

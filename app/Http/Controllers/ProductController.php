@@ -40,6 +40,10 @@ class ProductController extends Controller
         $category = Category::all();
         return view('admin.adminproduct',compact('product','category'));
     }
+    public function indexcustomer(){
+        $product = Product::all();
+        return view('customer.productlist',compact('product'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -48,6 +52,30 @@ class ProductController extends Controller
     public function create()
     {
         //
+    }
+    public function addcart(Product $product){
+        $cart = session('cart');
+        if(!$cart){
+            $cart = array();
+        }
+        if(!isset($cart[$product->id])){
+            $cart[$product->id] = [
+                "name" => $product->name,
+                "brand" => $product->brand,
+                "price" => $product->price,
+                "quantity" => $_POST['qty'],
+                "filename" => $product->img_url,
+                "dimension" => $product->dimension,
+            ];
+        }
+        else{
+            $cart[$product->id]['quantity']++;
+        }
+        session()->put('cart',$cart);
+        return response()->json([
+            "status" => "oke",
+            "message" => "sukses menambahkan $product->name ke cart",
+        ]);
     }
 
     /**
@@ -69,7 +97,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('customer.productdetail',compact('product'));
     }
 
     /**

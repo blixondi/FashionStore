@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fe/css/colors/purple.css') }}" />
     <link rel="preload" href="{{ asset('assets/fe/css/fonts/thicccboi.css') }}" as="style"
         onload="this.rel='stylesheet'" />
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -772,8 +773,12 @@
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link position-relative d-flex flex-row align-items-center"
+                                    {{-- <a class="nav-link position-relative d-flex flex-row align-items-center"
                                         data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart">
+                                        <i class="uil uil-shopping-cart"></i>
+                                        <span class="badge badge-cart bg-primary">3</span>
+                                    </a> --}}
+                                    <a class="nav-link position-relative d-flex flex-row align-items-center" href="/cart">
                                         <i class="uil uil-shopping-cart"></i>
                                         <span class="badge badge-cart bg-primary">3</span>
                                     </a>
@@ -1016,5 +1021,6 @@
     </div>
     <script src="{{ asset('assets/fe/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/fe/js/theme.js') }}"></script>
+    @yield('js')
 
 </body>
