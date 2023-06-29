@@ -79,7 +79,7 @@
                                     <h6 class="fw-semibold mb-1">{{$p->description}}</h6>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <img src="{{$p->img_url}}" alt="">
+                                    <img width="150px" src="{{asset('assets/img/products/' . $p->img_url)}}" alt="">
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
