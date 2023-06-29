@@ -1,5 +1,5 @@
 <!doctype html>
-z<html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -19,7 +19,8 @@ z<html lang="en">
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="./index.html" class="text-nowrap logo-img">
-                        <img src="{{ asset('/assets/be/images/logos/dark-logo.svg') }}" width="180" alt="" />
+                        <img src="{{ asset('assets/fe/img/FS-sm.png') }}"
+                        srcset="{{ asset('assets/fe/img/FS-lg.png') }} 2x" alt="" width="180" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
