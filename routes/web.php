@@ -44,3 +44,8 @@ Route::post("/product/addcart/{product}",[ProductController::class,"addcart"]);
 
 Route::get('/cart',[CustomerController::class,"cart"]);
 Route::post('/checkout',[CustomerController::class,"checkout"]);
+
+Route::get('/test', function(){
+    return view('main.twst');
+});
+Route::get('/profile/{user}',[CustomerController::class,"checkTransaction"]);

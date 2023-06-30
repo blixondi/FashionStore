@@ -43,16 +43,13 @@
                         <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Pria</a>
+                                    <a class="nav-link" href="{{url("pria")}}">Pria</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Wanita</a>
+                                    <a class="nav-link" href="{{url("wanita")}}">Wanita</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Anak</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="">Anak</a>
+                                    <a class="nav-link" href="{{url("anak")}}">Anak</a>
                                 </li>
                             </ul>
                             <!-- /.navbar-nav -->
@@ -94,9 +91,22 @@
                                 <li class="nav-item d-lg-none">
                                     <button class="hamburger offcanvas-nav-btn"><span></span></button>
                                 </li>
-                                <li class="nav-item d-none d-md-block">
-                                    <h6>Halo, {{ Auth::user()->fname }}</h6>
-                                </li>
+                                <li class="nav-item dropdown">
+                                    <h6 class="dropdown-item">Halo, {{ Auth::user()->fname }}</h6>
+                                    <ul class="dropdown-menu">
+                                      <li class="nav-item"><a class="dropdown-item" href="/profile/{{Auth::user()->id}}"><i class="uil uil-setting"></i> Pengaturan</a></li>
+                                      <li class="nav-item"><a class="dropdown-item" href="/cart"><i class="uil uil-shopping-cart"></i> Keranjang</a></li>
+                                      <li class="nav-item"><a href="{{ route('logout') }}" class="dropdown-item"
+                                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><i class="uil uil-signout"></i> Keluar</a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none" hidden>
+                                        @csrf
+                                    </form></li>
+                                    </ul>
+                                  </li>
+                                    <!--/.dropdown-menu -->
                                 <li class="nav-item d-none d-md-block">
                                     <a href="{{ route('logout') }}" class="btn btn-primary rounded-pill"
                                         onclick="event.preventDefault();

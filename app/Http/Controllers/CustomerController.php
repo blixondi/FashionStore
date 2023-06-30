@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,8 +45,11 @@ class CustomerController extends Controller
             return redirect('/');
         }
     }
-    function checkTransaction()
+    function checkTransaction(User $user)
     {
-        $transaction = Transaction::all();
+        // $user = User::find();
+        $transaction = Transaction::all()->where('users_id',$user->id);
+        // $transaction = Transaction::find($user->id);
+        return view("main.profile",compact('user','transaction'));
     }
 }

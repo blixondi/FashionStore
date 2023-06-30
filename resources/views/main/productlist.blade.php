@@ -17,7 +17,7 @@
     <div class="container py-14 py-md-16">
       <div class="row align-items-center mb-10 position-relative zindex-1">
         <div class="col-md-8 col-lg-9 col-xl-8 col-xxl-7 pe-xl-20">
-          <h2 class="display-6">New Arrivals</h2>
+          <h2 class="display-6">Produk untukmu</h2>
           <nav class="d-inline-block" aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
               <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>

@@ -84,7 +84,7 @@
                         data-group="page-title-buttons" data-delay="900">
                         <span><a class="btn btn-primary btn-icon btn-icon-start rounded-pill me-2"
                                 href="{{ url('pria') }}">
-                                Lihat selengkapnya</a></span>
+                                Produk Pria</a></span>
                     </div>
                 </div>
                 <!-- /column -->
@@ -113,7 +113,7 @@
                     <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown"
                         data-group="page-title-buttons" data-delay="900">
                         <span><a href="{{ url('wanita') }}"
-                                class="btn btn-lg btn-primary rounded-pill me-2">Explore Now</a></span>
+                                class="btn btn-lg btn-primary rounded-pill me-2">Produk Wanita</a></span>
                     </div>
                 </div>
                 <!--/column -->
@@ -134,7 +134,7 @@
             <!-- /.row -->
             
                 <div class="d-flex justify-content-center" data-cues="slideInDown" data-group="join" data-delay="900">
-                    <span><a class="btn btn-lg btn-primary rounded-pill mx-1" href="{{url('anak')}}">See Projects</a></span>
+                    <span><a class="btn btn-lg btn-primary rounded-pill mx-1" href="{{url('anak')}}">Produk Anak</a></span>
                 </div>
             <!-- /div -->
             {{-- <div class="row mt-12" data-cue="fadeIn" data-delay="1600">
