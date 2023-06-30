@@ -17,19 +17,19 @@ class ProductController extends Controller
     public function index_pria()
     {
         $product = Product::where('categories_id',1)->get();
-        dd($product);
+        return view('main.productlist', compact('product'));
     }
 
     public function index_wanita()
     {
         $product = Product::where('categories_id',2)->get();
-        dd($product);
+        return view('main.productlist', compact('product'));
     }
 
     public function index_anak()
     {
         $product = Product::where('categories_id',3)->get();
-        dd($product);
+        return view('main.productlist', compact('product'));
     }
 
     public function indexadmin(){
@@ -39,10 +39,6 @@ class ProductController extends Controller
         INNER JOIN types t ON p.types_id = t.id'));
         $category = Category::all();
         return view('admin.adminproduct',compact('product','category'));
-    }
-    public function indexcustomer(){
-        $product = Product::all();
-        return view('main.productlist',compact('product'));
     }
     /**
      * Show the form for creating a new resource.
