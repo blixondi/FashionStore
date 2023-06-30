@@ -18,5 +18,8 @@ class Product extends Model
     {
         return $this->belongsTo(Type::class,"types_id");
     }
-    // protected $tablename = 'products';
+
+    function transactions(){
+        return $this->belongsToMany(Transaction::class)->withPivot(["quantity", "total_price"]);
+    }
 }

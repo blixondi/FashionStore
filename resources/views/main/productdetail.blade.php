@@ -1,4 +1,9 @@
 @extends('layouts.shop')
+
+@section('title')
+    {{$product->name}} | FashionStore
+@endsection
+
 @section('content')
 <section class="wrapper bg-gray">
     <section class="wrapper bg-gray">

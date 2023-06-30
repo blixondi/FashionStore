@@ -43,3 +43,4 @@ Route::get('/product',[ProductController::class,'indexcustomer'])->name('custpro
 Route::post("/product/addcart/{product}",[ProductController::class,"addcart"]);
 
 Route::get('/cart',[CustomerController::class,"cart"]);
+Route::post('/checkout',[CustomerController::class,"checkout"]);

@@ -117,7 +117,10 @@
                 </tbody>
               </table>
             </div>
-            <a href="#" class="btn btn-primary rounded w-100 mt-4">Checkout</a>
+            <form action="/checkout" method="post">
+                @csrf
+                <input type="submit" value="Checkout" class="btn btn-primary rounded w-100 mt-4">
+            </form>
           </div>
         @else
           <div class="card shadow-lg">
