@@ -27,13 +27,9 @@
         <header class="wrapper bg-soft-primary">
             <nav class="navbar navbar-expand-lg center-nav transparent navbar-light">
                 <div class="container flex-lg-row flex-nowrap align-items-center">
-<<<<<<< Updated upstream
-                    <div class="navbar-brand w-100">
-                        <a href="{{url('/')}}">
-=======
                     <div class="navbar-brand w-50">
-                        <a href="./index.html">
->>>>>>> Stashed changes
+                        <a href="{{url('/')}}">
+
                             <img src="{{ asset('assets/fe/img/FS-sm.png') }}"
                                 srcset="{{ asset('assets/fe/img/FS-lg.png') }} 2x" alt="" />
                         </a>
