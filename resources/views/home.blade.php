@@ -71,21 +71,19 @@
 
     <section class="wrapper bg-soft-primary">
         <div class="container pt-5 pb-15 py-lg-17 py-xl-19 pb-xl-20 position-relative">
-            <img class="position-lg-absolute col-12 col-lg-10 col-xl-11 col-xxl-10 px-lg-5 px-xl-0 ms-n5 ms-sm-n8 ms-md-n10 ms-lg-0 mb-md-4 mb-lg-0 rounded"
+            <img class="position-lg-absolute  rounded"
                 src="{{ asset('assets/img/men.jpg') }}"
                 srcset="{{ asset('assets/img/men.jpg') }} 2x" data-cue="fadeIn" alt=""
                 style="top: -1%; left: -21%;" />
             <div class="row gx-0 align-items-center">
-                <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-7 offset-xxl-6 ps-xxl-12 mt-md-n9 text-center text-lg-start"
+                <div class="col-md-10 offset-md-1 col-lg-5 offset-lg-10 offset-xxl-7 ps-xxl-12 mt-md-n9 text-center text-lg-start"
                     data-cues="slideInDown" data-group="page-title" data-delay="600">
-                    <h1 class="display-2 mb-4 mx-sm-n2 mx-md-0">Get all of your steps, exercise, sleep and meds in one
-                        place.</h1>
-                    <p class="lead fs-lg mb-7 px-md-10 px-lg-0">Sandbox is now available to download from both the App Store
-                        and Google Play Store.</p>
+                    <h1 class="display-2 mb-4 mx-sm-n2 mx-md-0">Gaya yang menawan dan tak terlupakan. Temukan koleksi terkini kami!</h1>
+                    <p class="lead fs-lg mb-7 px-md-10 px-lg-0">Pakaian pria yang memikat. Gaya yang tak tertandingi. Eksplorasi koleksi fashion terbaik kami. Tampil percaya diri. It's time to elevate your style!</p>
                     <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown"
                         data-group="page-title-buttons" data-delay="900">
                         <span><a class="btn btn-primary btn-icon btn-icon-start rounded-pill me-2"
-                                href="{{ url('pria') }}"><i class="uil uil-apple"></i>
+                                href="{{ url('pria') }}">
                                 Lihat selengkapnya</a></span>
                     </div>
                 </div>
@@ -104,15 +102,14 @@
                         style="top: -1.7rem; left: -1.5rem;"></div>
                     <div class="shape rounded bg-soft-primary rellax d-md-block" data-rellax-speed="0"
                         style="bottom: -1.8rem; right: -0.8rem; width: 85%; height: 90%;"></div>
-                    <figure class="rounded"><img src="{{ asset('assets/img/men.jpg') }}"
+                    <figure class="rounded"><img src="{{ asset('assets/img/women.jpg') }}"
                             srcset="{{ asset('assets/img/photos/about7@2x.jpg') }} 2x" alt="" /></figure>
                 </div>
                 <!--/column -->
                 <div class="col-lg-5 mt-lg-n10 text-center text-lg-start" data-cues="slideInDown" data-group="page-title"
                     data-delay="600">
-                    <h1 class="display-1 mb-5">We bring solutions to make life easier for our customers.</h1>
-                    <p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0">We have considered our solutions to support every
-                        stage of your growth.</p>
+                    <h1 class="display-1 mb-5">Fashion wanita yang memukau. Pesona dan keanggunan yang tak terbantahkan.</h1>
+                    <p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0">Pakaian wanita yang memikat hati. Gaya yang mempesona dan menginspirasi. Temukan ragam koleksi fashion kami yang luar biasa. Tampilkan keunikan diri dengan penuh percaya diri. Siap untuk mencuri perhatian dan meraih sorotan di setiap kesempatan? Bergabunglah dengan kami dan buktikan bahwa fashion adalah seni yang bisa Anda kuasai</p>
                     <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown"
                         data-group="page-title-buttons" data-delay="900">
                         <span><a href="{{ url('wanita') }}"
@@ -124,30 +121,32 @@
             <!-- /.row -->
     </section>
 
+    <section class="wrapper image-wrapper bg-image bg-overlay text-white" data-image-src="{{asset("/assets/img/kids.jpg")}}">
     <section class="wrapper bg-gradient-primary">
         <div class="container py-14 pt-md-15 pb-md-18">
             <div class="row text-center">
                 <div class="col-lg-9 col-xxl-7 mx-auto" data-cues="zoomIn" data-group="welcome" data-interval="-200">
-                    <h2 class="display-1 mb-4">Creative. Smart. Awesome.</h2>
-                    <p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7">We are an award winning web & mobile design
-                        agency that strongly believes in the power of creative ideas.</p>
+                    <h2 class="display-1 mb-4">Fashion anak-anak yang ceria. Gaya yang menyenangkan.</h2>
+                    <p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7 ">Kisah petualangan fashion dimulai di sini! Koleksi fashion anak-anak kami menghadirkan warna, kenyamanan, dan kegembiraan dalam setiap jahitan. Dari busana yang lucu dan menggemaskan hingga pakaian yang fungsional dan berkualitas, kami menyediakan pilihan terbaik untuk putra dan putri kecil Anda.</p>
                 </div>
                 <!-- /column -->
             </div>
             <!-- /.row -->
-            <div class="d-flex justify-content-center" data-cues="slideInDown" data-group="join" data-delay="900">
-                <span><a class="btn btn-lg btn-primary rounded-pill mx-1" href="{{url('anak')}}">See Projects</a></span>
-            </div>
+            
+                <div class="d-flex justify-content-center" data-cues="slideInDown" data-group="join" data-delay="900">
+                    <span><a class="btn btn-lg btn-primary rounded-pill mx-1" href="{{url('anak')}}">See Projects</a></span>
+                </div>
             <!-- /div -->
-            <div class="row mt-12" data-cue="fadeIn" data-delay="1600">
+            {{-- <div class="row mt-12" data-cue="fadeIn" data-delay="1600">
                 <div class="col-lg-8 mx-auto">
                     <figure><img class="img-fluid" src="{{ asset('/assets/fe/img/illustrations/i12.png') }}"
                             srcset="{{ asset('/assets/fe/img/illustrations/i12@2x.png') }} 2x" alt=""></figure>
                 </div>
                 <!-- /column -->
-            </div>
+            </div> --}}
             <!-- /.row -->
         </div>
         <!-- /.container -->
     </section>
+</section>
 @endsection
