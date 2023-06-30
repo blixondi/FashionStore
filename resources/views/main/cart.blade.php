@@ -34,7 +34,6 @@
                               <figure class="rounded w-17"><a href="./shop-product.html"><img src="{{asset("./assets/img/products/".$c['filename'])}}" srcset="./assets/img/photos/sth1@2x.jpg 2x" alt="" /></a></figure>
                               <div class="w-100 ms-4">
                               <h3 class="post-title h6 lh-xs mb-1"><a href="./shop-product.html" class="link-dark">{{Str::ucfirst($c['name'])}}</a></h3>
-                              <div class="small">Category: Black</div>
                               <div class="small">Brand: {{$c['brand']}}</div>
                               </div>
                           </td>
@@ -119,7 +118,7 @@
             </div>
           </div>
         @endif
-            
+
         <!-- /column -->
       </div>
       <!-- /.row -->
