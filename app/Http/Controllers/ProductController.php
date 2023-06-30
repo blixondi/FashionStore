@@ -42,7 +42,7 @@ class ProductController extends Controller
     }
     public function indexcustomer(){
         $product = Product::all();
-        return view('customer.productlist',compact('product'));
+        return view('main.productlist',compact('product'));
     }
     /**
      * Show the form for creating a new resource.
@@ -53,7 +53,7 @@ class ProductController extends Controller
     {
         //
     }
-    public function addcart(Product $product){
+    public function addcart(Request $request, Product $product){
         $cart = session('cart');
         if(!$cart){
             $cart = array();
@@ -63,13 +63,13 @@ class ProductController extends Controller
                 "name" => $product->name,
                 "brand" => $product->brand,
                 "price" => $product->price,
-                "quantity" => $_POST['qty'],
+                "quantity" => $request->qty,
                 "filename" => $product->img_url,
                 "dimension" => $product->dimension,
             ];
         }
         else{
-            $cart[$product->id]['quantity']++;
+            $cart[$product->id]['quantity'] = $request->qty;
         }
         session()->put('cart',$cart);
         return response()->json([
@@ -97,7 +97,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('customer.productdetail',compact('product'));
+        return view('main.productdetail',compact('product'));
     }
 
     /**

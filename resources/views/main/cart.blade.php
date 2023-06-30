@@ -31,26 +31,21 @@
                       @foreach ($cart as $c)
                           <tr>
                           <td class="option text-start d-flex flex-row align-items-center ps-0">
-                              <figure class="rounded w-17"><a href="./shop-product.html"><img src="{{asset("./assets/img/product/".$c['filename'])}}" srcset="./assets/img/photos/sth1@2x.jpg 2x" alt="" /></a></figure>
+                              <figure class="rounded w-17"><a href="./shop-product.html"><img src="{{asset("./assets/img/products/".$c['filename'])}}" srcset="./assets/img/photos/sth1@2x.jpg 2x" alt="" /></a></figure>
                               <div class="w-100 ms-4">
-                              <h3 class="post-title h6 lh-xs mb-1"><a href="./shop-product.html" class="link-dark">Nike Air Sneakers</a></h3>
-                              <div class="small">Color: Black</div>
-                              <div class="small">Size: 43</div>
+                              <h3 class="post-title h6 lh-xs mb-1"><a href="./shop-product.html" class="link-dark">{{Str::ucfirst($c['name'])}}</a></h3>
+                              <div class="small">Category: Black</div>
+                              <div class="small">Brand: {{$c['brand']}}</div>
                               </div>
                           </td>
                           <td>
-                              <p class="price"><del><span class="amount">$55.00</span></del> <ins><span class="amount">$45.99</span></ins></p>
+                              <p class="price"><span class="amount">@currency($c['price'])</span></p>
                           </td>
                           <td>
-                              <div class="form-select-wrapper">
-                              <select class="form-select form-select-sm mx-auto">
-                                  <option value="1" selected>1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
-                              </select>
-                              </div>
+                            <div class="form-floating">
+                              <input id="txtQty" type="number" class="form-control" placeholder="Text Input" value="{{$c['quantity']}}" min="0">
+                              <label for="textInputExample">Quantity</label>
+                            </div>
                               <!--/.form-select-wrapper -->
                           </td>
                           <td>

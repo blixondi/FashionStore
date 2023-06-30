@@ -75,7 +75,7 @@
                   <div class="col-lg-9 d-flex flex-row pt-2">
                     <div>
                       <div class="form-floating">
-                        <input id="txtQty" type="number" class="form-control" placeholder="Text Input">
+                        <input id="txtQty" type="number" class="form-control" placeholder="Text Input" name="qty" min="0">
                         <label for="textInputExample">Quantity</label>
                       </div>
                       <!--/.form-select-wrapper -->
@@ -108,7 +108,8 @@
       $(document).ready(function () {
             $("#btn-addcart").on("click", function(){
                 let id = $(this).attr("data-id");
-                let quantity = $(".txtQty").attr('value');
+                let quantity = $("#txtQty").val();
+                alert(quantity);
                 $.post(
                     "{{url('product/addcart')}}" + "/" + id,
                     {

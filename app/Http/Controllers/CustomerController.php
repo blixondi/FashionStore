@@ -12,7 +12,7 @@ class CustomerController extends Controller
         // $this->authorize("checkmember");
         // dd(session('cart'));
         $cart = session("cart");
-        return view("customer.cart",compact("cart"));
+        return view("main.cart",compact("cart"));
     }
     function checkout(){
         // $this->authorize("checkmember");
