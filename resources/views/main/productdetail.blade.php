@@ -81,7 +81,6 @@
             $("#btn-addcart").on("click", function(){
                 let id = $(this).attr("data-id");
                 let quantity = $("#txtQty").val();
-                alert(quantity);
                 $.post(
                     "{{url('product/addcart')}}" + "/" + id,
                     {
@@ -90,7 +89,12 @@
                     },
                     function(data){
                         if(data.status == "oke"){
-                            alert(data.message);
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil tambah item'
+                            }
+                            )
+                            //alert(data.message);
                         }
                     }
                 )

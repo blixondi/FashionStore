@@ -18,6 +18,7 @@
     <link rel="preload" href="{{ asset('assets/fe/css/fonts/thicccboi.css') }}" as="style"
         onload="this.rel='stylesheet'" />
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -1022,5 +1023,4 @@
     <script src="{{ asset('assets/fe/js/plugins.js') }}"></script>
     <script src="{{ asset('assets/fe/js/theme.js') }}"></script>
     @yield('js')
-
 </body>
