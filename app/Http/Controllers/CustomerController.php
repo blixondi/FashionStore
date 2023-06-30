@@ -30,7 +30,7 @@ class CustomerController extends Controller
                 $total = 0;
                 $t->products()->attach($key, [
                     "quantity" => $value['quantity'],
-                    "subtotal" => $subtotal
+                    "total_price" => $subtotal
                 ]);
                 $t->total += $subtotal;
                 $total += $subtotal;
