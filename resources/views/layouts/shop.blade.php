@@ -23,6 +23,12 @@
 
 <body>
     <div class="content-wrapper">
+        @if (session('message'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{session('message')}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
         <!--Navbar-->
         <header class="wrapper bg-soft-primary">
             <nav class="navbar navbar-expand-lg center-nav transparent navbar-light">
@@ -86,6 +92,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link position-relative d-flex flex-row align-items-center" href="/cart">
                                         <i class="uil uil-shopping-cart"></i>
+                                        {{-- <span class="badge badge-cart bg-primary">{{session('cart')}}</span> --}}
                                     </a>
                                 </li>
                                 <li class="nav-item d-lg-none">
@@ -94,8 +101,8 @@
                                 <li class="nav-item dropdown">
                                     <h6 class="dropdown-item">Halo, {{ Auth::user()->fname }}</h6>
                                     <ul class="dropdown-menu">
-                                      <li class="nav-item"><a class="dropdown-item" href="/profile/{{Auth::user()->id}}"><i class="uil uil-setting"></i> Pengaturan</a></li>
-                                      <li class="nav-item"><a class="dropdown-item" href="/cart"><i class="uil uil-shopping-cart"></i> Keranjang</a></li>
+                                      <li class="nav-item"><a class="dropdown-item" href="{{url('/profile')}}"><i class="uil uil-setting"></i> Pengaturan</a></li>
+                                      <li class="nav-item"><a class="dropdown-item" href="{{url('/cart')}}"><i class="uil uil-shopping-cart"></i> Keranjang</a></li>
                                       <li class="nav-item"><a href="{{ route('logout') }}" class="dropdown-item"
                                         onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"><i class="uil uil-signout"></i> Keluar</a>

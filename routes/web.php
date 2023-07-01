@@ -48,4 +48,4 @@ Route::post('/checkout',[CustomerController::class,"checkout"]);
 Route::get('/test', function(){
     return view('main.twst');
 });
-Route::get('/profile/{user}',[CustomerController::class,"checkTransaction"]);
+Route::get('/profile',[CustomerController::class,"checkTransaction"]);
