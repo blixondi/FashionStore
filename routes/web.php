@@ -31,6 +31,8 @@ Route::get('/admin', function(){
 });
 Route::get('/admin/category',[CategoryController::class,'indexadmin'])->name('admcategory.index');
 Route::get('/admin/product',[ProductController::class,'indexadmin'])->name('admproduct.index');
+Route::get('/admin/product/{id}',[ProductController::class,'adminshow'])->name('admproduct.detail');
+Route::get('/admin/customer',[CustomerController::class,'indexadmin'])->name('admcustomer.index');
 Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.index');
 
 

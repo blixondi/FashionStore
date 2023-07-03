@@ -7,6 +7,7 @@
     <title>Admin | FashionStore</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('/assets/be/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/be/css/styles.min.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -57,6 +58,15 @@
                                 <span class="hide-menu">Tipe</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{route('admcustomer.index')}}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Customer</span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </nav>
@@ -137,6 +147,10 @@
     <script src="{{ asset('/assets/be/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('/assets/be/js/app.min.js') }}"></script>
     <script src="{{ asset('/assets/be/libs/simplebar/dist/simplebar.js') }}"></script>
+
+    <script>
+        @yield('script')
+    </script>
 </body>
 
 </html>

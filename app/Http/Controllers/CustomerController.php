@@ -57,4 +57,16 @@ class CustomerController extends Controller
         // $transaction = Transaction::find($user->id);
         return view("main.profile", compact('transaction'));
     }
+
+
+
+    #region
+
+    function indexadmin(){
+        $user = User::all();
+        return view('admin.admincustomer',compact('user'));
+    }
+
+
+    #endregion
 }
