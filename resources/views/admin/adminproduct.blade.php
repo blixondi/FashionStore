@@ -47,7 +47,9 @@
                                             <h6 class="fw-semibold mb-1">{{ $p->type }}</h6>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <button type="button" id="details" data-url='{{route('admproduct.detail',$p->id)}}' class="btn btn-secondary m-1">Details</button>
+                                            <button type="button" id="details"
+                                                data-url='{{ route('admproduct.detail', $p->id) }}'
+                                                class="btn btn-secondary m-1">Details</button>
                                         </td>
                                         <td class="border-bottom-0">
 
@@ -69,7 +71,7 @@
         Launch demo modal
     </button>
 
-    <!-- Modal -->
+    <!-- Modal details -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -91,7 +93,29 @@
                     <p>Description : <span id="product-description"></span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="edit" data-dismiss="modal">Edit</button>
+                    <button type="button" class="btn btn-secondary" id="edit" onClick="create()" data-dismiss="modal">Edit</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal edit-->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -99,25 +123,28 @@
     </div>
 @endsection
 @section('script')
-    $(document).ready(function(){
-        $('body').on('click','#details',function(){
-            var userURL = $(this).data('url');
-            $.get(userURL, function(data){
-                $('#exampleModalLong').modal('show');
-                $('#product-id').text(data[0].id);
-                $('#product-name').text(data[0].name);
-                $('#product-category').text(data[0].category);
-                $('#product-type').text(data[0].type);
-                $('#product-brand').text(data[0].brand);
-                $('#product-price').text(data[0].price);
-                $('#product-dimension').text(data[0].dimension);
-                $('#product-description').text(data[0].description);
-                $('#product-image').text(data[0].img_url);
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '#details', function() {
+                var userURL = $(this).data('url');
+                $.get(userURL, function(data) {
+                    $('#exampleModalLong').modal('show');
+                    $('#product-id').text(data[0].id);
+                    $('#product-name').text(data[0].name);
+                    $('#product-category').text(data[0].category);
+                    $('#product-type').text(data[0].type);
+                    $('#product-brand').text(data[0].brand);
+                    $('#product-price').text(data[0].price);
+                    $('#product-dimension').text(data[0].dimension);
+                    $('#product-description').text(data[0].description);
+                    $('#product-image').text(data[0].img_url);
 
+                })
             })
-        })
-    });
-    function create(){
-        $("#edit").modal('show');
-    }
+        });
+
+        function create() {
+            $("#editModal").modal('show');
+        }
+    </script>
 @endsection
