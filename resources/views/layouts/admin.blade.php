@@ -21,7 +21,8 @@
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="./index.html" class="text-nowrap logo-img">
                         <img src="{{ asset('assets/fe/img/FS-sm.png') }}"
-                        srcset="{{ asset('assets/fe/img/FS-lg.png') }} 2x" alt="" width="180" alt="" />
+                            srcset="{{ asset('assets/fe/img/FS-lg.png') }} 2x" alt="" width="180"
+                            alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -35,7 +36,7 @@
                             <span class="hide-menu">List data</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('admcategory.index')}}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admcategory.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -43,7 +44,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('admproduct.index')}}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admproduct.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -51,7 +52,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('admtype.index')}}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admtype.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -59,7 +60,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{route('admcustomer.index')}}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('admcustomer.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -148,9 +149,7 @@
     <script src="{{ asset('/assets/be/js/app.min.js') }}"></script>
     <script src="{{ asset('/assets/be/libs/simplebar/dist/simplebar.js') }}"></script>
 
-    <script>
-        @yield('script')
-    </script>
+    @yield('script')
 </body>
 
 </html>

@@ -130,10 +130,10 @@
 
 @section('jquery')
     <script>
-        jQuery(document).ready(function() {
-            App.init();
-            $('#myModal').modal('show');
-        });
+        // jQuery(document).ready(function() {
+        //     App.init();
+        //     $('#myModal').modal('show');
+        // });
 
         function modalCreateCat() {
             $('#modalCreateCat').modal('show');
@@ -158,4 +158,4 @@
             $('#form-update').submit();
         }
     </script>
-@endsection
+>
