@@ -96,11 +96,22 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    // public function destroy($id)
+    // {
+    //     $category = Category::where("id", "=", $id)->first();
+    //     $category->delete();
+    //     return redirect()->route("admcategory.index")->with("message", "Delete Successfull");
+    // }
+
+    public function deleteData(Request $request)
     {
-        $category = Category::where("id", "=", $id)->first();
-        $category->delete();
-        return redirect()->route("admcategory.index")->with("message", "Delete Successfull");
+        $id = $request->get('id');
+        $data = Category::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Kategori berhasil di hapus'
+        ), 200);
     }
 
     // public function updateCat($id){

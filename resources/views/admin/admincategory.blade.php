@@ -37,7 +37,7 @@
                     Update Data 1
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="updateCategory1()">Update</button>
+                    <button type="button" class="btn btn-success" onclick="updateCategory()">Update</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -47,7 +47,7 @@
     </div>
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-    <div class="modal fade" id="modalDeleteCat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    {{-- <div class="modal fade" id="modalDeleteCat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -56,17 +56,17 @@
                     <h4 class="modal-title">Modal Delete Category</h4>
                 </div>
                 <div class="modal-body">
-                    Delete
+                    Are you sure want to delete this?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                 </div>
             </div>
             <!-- /.modal-content -->
-        </div>
+        </div> --}}
         <!-- /.modal-dialog -->
-    </div>
+    {{-- </div> --}}
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
     <div class="card-body">
@@ -100,7 +100,7 @@
                     </thead>
                     <tbody>
                         @foreach ($category as $c)
-                            <tr>
+                            <tr id="tr_{{ $c->id }}">
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">{{ $c->id }}</h6>
                                 </td>
@@ -115,6 +115,18 @@
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
                                         <span class="badge bg-secondary rounded-3 fw-semibold">{{ $c->updated_at }}</span>
+                                    </div>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <button class="btn btn-success"
+                                            onclick="modalEditCat({{ $c->id }})">Edit</button>
+                                    </div>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <button class="btn btn-success" onclick="if(confirm('Are you sure want to delete {{$c->id}} - {{$c->name}}?'))
+                                        modalDeleteCat({{$c->id}})">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -146,16 +158,29 @@
             });
         }
 
-        function modalDeleteCatCat() {
-            $('#modalDeleteCatCat').modal('show');
+        function modalDeleteCat(id) {
+            // $('#modalDeleteCat').modal('show');
+            $.post({
+                type:'POST',
+                url:'{{route("categories.deleteData")}}',
+                data:{
+                    '_token':'<?php echo csrf_token() ?>',
+                    'id':id
+                },
+                success:function(data){
+                    if(data.status=='oke'){
+                        $('#tr_'+id).remove();
+                    }
+                }
+            });
         }
 
         function insertCategory() {
             $('#formInsert').submit();
         }
 
-        function updateCategory1() {
+        function updateCategory() {
             $('#form-update').submit();
         }
     </script>
->
+    >

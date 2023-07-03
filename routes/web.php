@@ -34,7 +34,8 @@ Route::get('/admin/product',[ProductController::class,'indexadmin'])->name('admp
 Route::get('/admin/product/{id}',[ProductController::class,'adminshow'])->name('admproduct.detail');
 Route::get('/admin/customer',[CustomerController::class,'indexadmin'])->name('admcustomer.index');
 Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.index');
-Route::get('/admin/create_category/{id}', [CategoryController::class, 'updateCat']);
+Route::get('/admin/update_category/{id}', [CategoryController::class, 'updateCat']);
+Route::post('/admin/delete_category', [CategoryController::class, 'deleteData'])->name('categories.deleteData');
 
 
 Route::get('/pria',[ProductController::class, 'index_pria'])->name('Pria');
