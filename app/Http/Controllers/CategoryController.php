@@ -40,7 +40,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = Category::where("name", "=", $request->name)->first();
+        if($name){
+            return back()->withInput()->with("message", "Sudah ada");
+        }
+
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route("admcategory.index")->with("message", "Insert Successfull");
     }
 
     /**
@@ -60,9 +68,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+
+    public function edit($id)
     {
-        //
+        $category = Category::where("id", "=", $id)->first();
+        return view('admin.admcategory', ['categories'=>$category]);
     }
 
     /**
@@ -72,9 +82,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::where("id", "=", $id)->first();
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route("admcategory.index")->with("message", "Update Successfull");
     }
 
     /**
@@ -83,8 +96,15 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::where("id", "=", $id)->first();
+        $category->delete();
+        return redirect()->route("admcategory.index")->with("message", "Delete Successfull");
     }
+
+    // public function updateCat($id){
+    //     $category = Category::where("id", "=", $id)->first();
+    //     return view('categories.updateCat', ['categories'=>$category]);
+    // }
 }

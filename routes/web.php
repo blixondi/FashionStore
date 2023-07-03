@@ -34,13 +34,16 @@ Route::get('/admin/product',[ProductController::class,'indexadmin'])->name('admp
 Route::get('/admin/product/{id}',[ProductController::class,'adminshow'])->name('admproduct.detail');
 Route::get('/admin/customer',[CustomerController::class,'indexadmin'])->name('admcustomer.index');
 Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.index');
+Route::get('/admin/create_category/{id}', [CategoryController::class, 'updateCat']);
 
 
 Route::get('/pria',[ProductController::class, 'index_pria'])->name('Pria');
 Route::get('/wanita',[ProductController::class, 'index_wanita'])->name('Wanita');
 Route::get('/anak',[ProductController::class, 'index_anak'])->name('Anak');
 
-Route::resource('/product',ProductController::class);
+Route::resource("products", ProductController::class);
+Route::resource("categories", CategoryController::class);
+
 Route::get('/product',[ProductController::class,'indexcustomer'])->name('custproduct.index');
 Route::post("/product/addcart/{product}",[ProductController::class,"addcart"]);
 
