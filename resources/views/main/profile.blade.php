@@ -9,11 +9,11 @@
                 <div class="col-lg-4 ">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="{{asset("assets/img/pria.jpg")}}" width="100%" alt="" class="rounded">
-                            <h2 class="card-title">{{Str::ucfirst($user->fname)  .' '.Str::ucfirst($user->lname) }}</h2>
-                            <h6 class="">{{$user->email}}</h6>
-                            <p>{{$user->phone_number}}</p>
-                            <p>{{$user->point_member}} poin</p>
+                            <img src="{{asset("assets/img/{{$title}}.jpg")}}" width="100%" alt="" class="rounded mb-2">
+                            <h2 class="card-title">{{Str::ucfirst(Auth::user()->fname)  .' '.Str::ucfirst(Auth::user()->lname) }}</h2>
+                            <h6 class="">{{Auth::user()->email}}</h6>
+                            <p>{{Auth::user()->phone_number}}</p>
+                            <p>{{Auth::user()->point_member}} poin</p>
                             <button class="btn btn-primary">Sunting profil</button>
                         </div>
                     </div>

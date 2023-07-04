@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function indexadmin()
     {
         $category = Category::all();
-        return view('admin.admincategory',compact('category'));
+        return view('admin.category.admincategory',compact('category'));
     }
     /**
      * Show the form for creating a new resource.
@@ -40,7 +40,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = Category::where("name", "=", $request->name)->first();
+        if($name){
+            return back()->withInput()->with("message", "Sudah ada");
+        }
+
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route("admcategory.index")->with("message", "Insert Successfull");
     }
 
     /**
@@ -60,9 +68,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+
+    public function edit($id)
     {
-        //
+        $category = Category::where("id", "=", $id)->first();
+        return view('admin.category.admcatform', ['categories'=>$category]);
     }
 
     /**
@@ -72,9 +82,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::where("id", "=", $id)->first();
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route("admcategory.index")->with("message", "Update Successfull");
     }
 
     /**
@@ -83,8 +96,26 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    // public function destroy($id)
+    // {
+    //     $category = Category::where("id", "=", $id)->first();
+    //     $category->delete();
+    //     return redirect()->route("admcategory.index")->with("message", "Delete Successfull");
+    // }
+
+    public function deleteData(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $data = Category::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Kategori berhasil di hapus'
+        ), 200);
+    }
+
+    public function updateCat($id){
+        $category = Category::where("id", "=", $id)->first();
+        return view('admin.category.updateadmcat', ['categories'=>$category]);
     }
 }

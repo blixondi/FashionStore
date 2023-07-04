@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Type;
+use App\Models\User;
+use Database\Seeders\ProductSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -96,6 +99,15 @@ class ProductController extends Controller
     {
         return view('main.productdetail', compact('product'));
     }
+    public function adminshow($id)
+    {
+        $product = DB::select(DB::raw("SELECT p.id, p.categories_id, c.name as category, t.name as type, p.name, p.brand, p.price, p.dimension, p.description, p.img_url, p.updated_at, p.created_at
+        FROM products p INNER JOIN categories c ON p.categories_id = c.id
+        INNER JOIN types t ON p.types_id = t.id
+        WHERE p.id = '".$id."'"));
+
+        return response()->json($product);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -107,7 +119,18 @@ class ProductController extends Controller
     {
         //
     }
+    public function adminedit($id)
+    {
+        $product = DB::select(DB::raw("SELECT p.id, p.categories_id, c.name as category, t.name as type, p.name, p.brand, p.price, p.dimension, p.description, p.img_url, p.updated_at, p.created_at
+        FROM products p INNER JOIN categories c ON p.categories_id = c.id
+        INNER JOIN types t ON p.types_id = t.id
+        WHERE p.id = '".$id."'"));
 
+        $categories = Category::all();
+        $types = Type::all();
+
+        return view('adminedit', compact('product', 'categories', 'types'));
+    }
     /**
      * Update the specified resource in storage.
      *

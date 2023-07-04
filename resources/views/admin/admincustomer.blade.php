@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card-body">
-        <h5 class="card-title fw-semibold mb-4">List Kategori</h5>
+        <h5 class="card-title fw-semibold mb-4">List Customer</h5>
         <div class="card">
             <div class="card-body p-4">
                 <table class="table text-nowrap mb-0 align-middle">
@@ -29,22 +29,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($category as $c)
+                        @foreach ($user as $u)
                             <tr>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">{{$c->id}}</h6>
+                                    <h6 class="fw-semibold mb-0">{{$u->id}}</h6>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-1">{{$c->name}}</h6>
+                                    <h6 class="fw-semibold mb-1">{{$u->name}}</h6>
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-success rounded-3 fw-semibold">{{$c->created_at}}</span>
+                                        <span class="badge bg-success rounded-3 fw-semibold">{{$u->created_at}}</span>
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-secondary rounded-3 fw-semibold">{{$c->updated_at}}</span>
+                                        <span class="badge bg-secondary rounded-3 fw-semibold">{{$u->updated_at}}</span>
                                     </div>
                                 </td>
                             </tr>
