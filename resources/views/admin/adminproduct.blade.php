@@ -66,10 +66,7 @@
             </div>
         </div>
     @endforeach
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" onClick="create()" data-toggle="modal" data-target="#exampleModalLong">
-        Launch demo modal
-    </button>
+
 
     <!-- Modal details -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
@@ -93,7 +90,9 @@
                     <p>Description : <span id="product-description"></span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="edit" onClick="create()" data-dismiss="modal">Edit</button>
+                    <button type="button" id="edit" onclick="create()"
+                    data-url='{{ route('admproduct.edit', $p->id) }}'
+                    class="btn btn-secondary m-1">edit</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -101,7 +100,7 @@
     </div>
 
     <!-- Modal edit-->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    {{-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -112,15 +111,53 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">kategori</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$product[0]->id}}">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">tipe</label>
+                            <div>
+                                <select class="form-select">
+                                  @foreach ($types as $t )
+                                  <option value="">{{$t->name}}</option>
+                                  @endforeach
+                                </select>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">nama</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">brand</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">price</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">dimension</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">description</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">image_url</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('script')
     <script>
