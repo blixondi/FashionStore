@@ -38,7 +38,9 @@ Route::get('/admin/product/show/store_product',[ProductController::class,'admins
 Route::get('/admin/customer',[CustomerController::class,'indexadmin'])->name('admcustomer.index');
 Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.index');
 Route::get('/admin/update_category/{id}', [CategoryController::class, 'updateCat']);
+Route::get('/admin/update_customer/{id}', [CustomerController::class, 'updateCust']);
 Route::post('/admin/delete_category', [CategoryController::class, 'deleteData'])->name('categories.deleteData');
+Route::post('/admin/delete_customer', [CustomerController::class, 'deleteData'])->name('customers.deleteData');
 
 
 Route::get('/pria',[ProductController::class, 'index_pria'])->name('Pria');
@@ -47,6 +49,7 @@ Route::get('/anak',[ProductController::class, 'index_anak'])->name('Anak');
 
 Route::resource("products", ProductController::class);
 Route::resource("categories", CategoryController::class);
+Route::resource("customers", CustomerController::class);
 
 Route::get('/product',[ProductController::class,'indexcustomer'])->name('custproduct.index');
 Route::post("/product/addcart/{product}",[ProductController::class,"addcart"]);

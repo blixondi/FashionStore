@@ -30,7 +30,6 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Modal Update Category</h4>
                 </div>
                 <div class="modal-body">
@@ -65,7 +64,7 @@
             </div>
             <!-- /.modal-content -->
         </div> --}}
-        <!-- /.modal-dialog -->
+    <!-- /.modal-dialog -->
     {{-- </div> --}}
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
@@ -125,8 +124,9 @@
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
-                                        <button class="btn btn-success" onclick="if(confirm('Are you sure want to delete {{$c->id}} - {{$c->name}}?'))
-                                        modalDeleteCat({{$c->id}})">Delete</button>
+                                        <button class="btn btn-success"
+                                            onclick="if(confirm('Are you sure want to delete {{ $c->id }} - {{ $c->name }}?'))
+                                        modalDeleteCat({{ $c->id }})">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -140,7 +140,7 @@
     </div>
 @endsection
 
-@section('jquery')
+@section('script')
     <script>
         // jQuery(document).ready(function() {
         //     App.init();
@@ -161,15 +161,15 @@
         function modalDeleteCat(id) {
             // $('#modalDeleteCat').modal('show');
             $.post({
-                type:'POST',
-                url:'{{route("categories.deleteData")}}',
-                data:{
-                    '_token':'<?php echo csrf_token() ?>',
-                    'id':id
+                type: 'POST',
+                url: '{{ route('categories.deleteData') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id
                 },
-                success:function(data){
-                    if(data.status=='oke'){
-                        $('#tr_'+id).remove();
+                success: function(data) {
+                    if (data.status == 'oke') {
+                        $('#tr_' + id).remove();
                     }
                 }
             });
@@ -183,4 +183,4 @@
             $('#form-update').submit();
         }
     </script>
-    >
+@endsection

@@ -63,10 +63,65 @@ class CustomerController extends Controller
     #region
 
     function indexadmin(){
-        $user = User::all();
-        return view('admin.admincustomer',compact('user'));
+        $users = User::all();
+        return view('admin.customer.admincustomer',compact('users'));
     }
 
 
     #endregion
+
+    public function store(Request $request)
+    {
+        $name = User::where("username", "=", $request->username)->first();
+        if($name){
+            return back()->withInput()->with("message", "Sudah ada");
+        }
+
+        $user = new User();
+        $user->username = $request->username;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->role = "pembeli";
+        $user->point_member = 0;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+        return redirect()->route("admcustomer.index")->with("message", "Insert Successfull");
+    }
+
+    public function edit($id)
+    {
+        $user = User::where("id", "=", $id)->first();
+        return view('admin.customer.admcustform', ['users'=>$user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::where("id", "=", $id)->first();
+        $user->username = $request->username;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+        return redirect()->route("admcustomer.index")->with("message", "Update Successfull");
+    }
+
+    public function deleteData(Request $request)
+    {
+        $id = $request->get('id');
+        $data = User::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Kategori berhasil di hapus'
+        ), 200);
+    }
+
+    public function updateCust($id){
+        $user = User::where("id", "=", $id)->first();
+        return view('admin.customer.updateadmcust', ['users'=>$user]);
+    }
 }
