@@ -42,7 +42,7 @@ class ProductController extends Controller
         FROM products p INNER JOIN categories c on p.categories_id = c.id
         INNER JOIN types t ON p.types_id = t.id'));
         $category = Category::all();
-        return view('admin.adminproduct', compact('product', 'category'));
+        return view('admin.product.adminproduct', compact('product', 'category'));
     }
     /**
      * Show the form for creating a new resource.
@@ -51,7 +51,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+    }
+    public function admincreate()
+    {
+        $category = Category::all();
+        $types = Type::all();
+        return view('admin.product.admincreateform',compact('category','types'));
     }
     public function addcart(Request $request, Product $product)
     {
@@ -86,9 +92,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+    }
+    public function adminstore(Request $request)
+    {
+        $product = new Product();
+        $product->categories_id = $request->category;
+        $product->types_id = $request->type;
+        $product->name = $request->name;
+        $product->brand= $request->brand;
+        $product->price = $request->price;
+        $product->dimension = $request->dimension;
+        $product->description = $request->description;
+        $product->img_url = $request->img_url;
+        $product->save();
+        return redirect()->route("indexadmin")->with("message", "Insert Successfull");
+    }
     /**
      * Display the specified resource.
      *
@@ -121,15 +140,7 @@ class ProductController extends Controller
     }
     public function adminedit($id)
     {
-        $product = DB::select(DB::raw("SELECT p.id, p.categories_id, c.name as category, t.name as type, p.name, p.brand, p.price, p.dimension, p.description, p.img_url, p.updated_at, p.created_at
-        FROM products p INNER JOIN categories c ON p.categories_id = c.id
-        INNER JOIN types t ON p.types_id = t.id
-        WHERE p.id = '".$id."'"));
-
-        $categories = Category::all();
-        $types = Type::all();
-
-        return view('adminedit', compact('product', 'categories', 'types'));
+        return view('admin.product.admineditform');
     }
     /**
      * Update the specified resource in storage.

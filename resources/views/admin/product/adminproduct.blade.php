@@ -1,8 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
+    <button class="btn btn-success" onclick="create()">Tambah Kategori</button>
     @foreach ($category as $c)
         <div class="card-body">
+
             <h5 class="card-title fw-semibold mb-4">{{ $c->name }}</h5>
             <div class="card">
                 <div class="card-body p-4">
@@ -22,11 +24,9 @@
                                     <h6 class="fw-semibold mb-0">Type</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Details</h6>
+                                    <h6 class="fw-semibold mb-0">Action</h6>
                                 </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Delete</h6>
-                                </th>
+
 
                             </tr>
                         </thead>
@@ -52,8 +52,10 @@
                                                 class="btn btn-secondary m-1">Details</button>
                                         </td>
                                         <td class="border-bottom-0">
-
+                                            <button type="button" class="btn btn-secondary m-1"
+                                                onclick="show({{ $p->id }})">Edit</button>
                                         </td>
+
 
                                     </tr>
                                 @endif
@@ -90,81 +92,44 @@
                     <p>Description : <span id="product-description"></span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="edit" onclick="create()"
-                    data-url='{{ route('admproduct.edit', $p->id) }}'
-                    class="btn btn-secondary m-1">edit</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Modal edit-->
-    {{-- <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h5 class="modal-title" id="modalTitle">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">kategori</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$product[0]->id}}">
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">tipe</label>
-                            <div>
-                                <select class="form-select">
-                                  @foreach ($types as $t )
-                                  <option value="">{{$t->name}}</option>
-                                  @endforeach
-                                </select>
-                            </div>
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">nama</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">brand</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">price</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">dimension</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">description</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          </div>
-                          <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">image_url</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                          </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </form>
+                    <div id="page" class="p-2"></div>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 @section('script')
     <script>
+        function show(id) {
+            $.get("{{ url('admin/product/show/edit_product') }}/" + id, {}, function(data, status) {
+                $("#modalTitle").html('Edit Produk');
+                $("#page").html(data);
+                $("#Modal").modal('show');
+
+            });
+        }
         $(document).ready(function() {
             $('body').on('click', '#details', function() {
                 var userURL = $(this).data('url');
                 $.get(userURL, function(data) {
+                    $("#exampleModalLongTitle").html('Detail Produk ');
                     $('#exampleModalLong').modal('show');
                     $('#product-id').text(data[0].id);
                     $('#product-name').text(data[0].name);
@@ -181,7 +146,41 @@
         });
 
         function create() {
-            $("#editModal").modal('show');
+            $.get("{{ url('admin/product/show/create_product') }}", {}, function(data, status) {
+                $("#modalTitle").html('Produk baru');
+                $("#page").html(data);
+                $("#Modal").modal('show');
+
+            });
+        }
+
+        function store() {
+            var category = $("#category").val();
+            var type = $("#type").val();
+            var name = $("#name").val();
+            var brand = $("#brand").val();
+            var price = $("#price").val();
+            var dimension = $("#dimension").val();
+            var description = $("#description").val();
+            var img_url = $("#img_url").val();
+            $.ajax({
+                type: "get",
+                url: "{{ url('/admin/product/show/store_product') }}",
+                data: {
+                    category: category,
+                    type: type,
+                    name: name,
+                    brand: brand,
+                    price: price,
+                    dimension: dimension,
+                    description: description,
+                    img_url: img_url
+                },
+                success:function(data){
+                    $("#page").html('');
+                }
+
+            })
         }
     </script>
 @endsection
