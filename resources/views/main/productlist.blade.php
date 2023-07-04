@@ -1,11 +1,11 @@
 @extends('layouts.shop')
 @section('content')
-<section class="wrapper bg-gray">
+<section class="wrapper bg-gray image-wrapper bg-image bg-cover" data-image-src="{{asset("/assets/img/$title.jpg")}}">
     <div class="container py-12 py-md-16 text-center">
       <div class="row">
         <div class="col-lg-10 col-xxl-8 mx-auto">
-          <h1 class="display-1 mb-3">{{$title}}</h1>
-          <p class="lead mb-1">{{$subtitle}}</p>
+          <h1 class="display-1 mb-3 text-white" >{{$title}}</h1>
+          <p class="lead mb-1 text-white">{{$subtitle}}</p>
         </div>
         <!-- /column -->
       </div>

@@ -9,7 +9,7 @@
                 <div class="col-lg-4 ">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="{{asset("assets/img/men.jpg")}}" width="100%" alt="" class="rounded">
+                            <img src="{{asset("assets/img/pria.jpg")}}" width="100%" alt="" class="rounded">
                             <h2 class="card-title">{{Str::ucfirst($user->fname)  .' '.Str::ucfirst($user->lname) }}</h2>
                             <h6 class="">{{$user->email}}</h6>
                             <p>{{$user->phone_number}}</p>
