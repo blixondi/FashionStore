@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function indexadmin()
     {
         $category = Category::all();
-        return view('admin.admincategory',compact('category'));
+        return view('admin.category.admincategory',compact('category'));
     }
     /**
      * Show the form for creating a new resource.
@@ -72,7 +72,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::where("id", "=", $id)->first();
-        return view('admin.admcategory', ['categories'=>$category]);
+        return view('admin.category.admcatform', ['categories'=>$category]);
     }
 
     /**
@@ -114,8 +114,8 @@ class CategoryController extends Controller
         ), 200);
     }
 
-    // public function updateCat($id){
-    //     $category = Category::where("id", "=", $id)->first();
-    //     return view('categories.updateCat', ['categories'=>$category]);
-    // }
+    public function updateCat($id){
+        $category = Category::where("id", "=", $id)->first();
+        return view('admin.category.updateadmcat', ['categories'=>$category]);
+    }
 }

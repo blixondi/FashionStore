@@ -152,7 +152,7 @@
         }
 
         function modalEditCat(id) {
-            $.get("{{ url('category') }}/" + id, function(data) {
+            $.get("{{ url('admin/update_category') }}/" + id, function(data) {
                 $('#modalEditCat .modal-body').html(data);
                 $('#modalEditCat').modal('show');
             });
