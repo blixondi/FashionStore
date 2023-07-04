@@ -20,7 +20,7 @@ class CategoryController extends Controller
     public function indexadmin()
     {
         $category = Category::all();
-        return view('admin.admincategory',compact('category'));
+        return view('admin.category.admincategory',compact('category'));
     }
     /**
      * Show the form for creating a new resource.
@@ -72,7 +72,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::where("id", "=", $id)->first();
-        return view('admin.admcategory', ['categories'=>$category]);
+        return view('admin.category.admcatform', ['categories'=>$category]);
     }
 
     /**
@@ -96,15 +96,26 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    // public function destroy($id)
+    // {
+    //     $category = Category::where("id", "=", $id)->first();
+    //     $category->delete();
+    //     return redirect()->route("admcategory.index")->with("message", "Delete Successfull");
+    // }
+
+    public function deleteData(Request $request)
     {
-        $category = Category::where("id", "=", $id)->first();
-        $category->delete();
-        return redirect()->route("admcategory.index")->with("message", "Delete Successfull");
+        $id = $request->get('id');
+        $data = Category::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Kategori berhasil di hapus'
+        ), 200);
     }
 
-    // public function updateCat($id){
-    //     $category = Category::where("id", "=", $id)->first();
-    //     return view('categories.updateCat', ['categories'=>$category]);
-    // }
+    public function updateCat($id){
+        $category = Category::where("id", "=", $id)->first();
+        return view('admin.category.updateadmcat', ['categories'=>$category]);
+    }
 }
