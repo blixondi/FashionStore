@@ -155,32 +155,7 @@
         }
 
         function store() {
-            var category = $("#category").val();
-            var type = $("#type").val();
-            var name = $("#name").val();
-            var brand = $("#brand").val();
-            var price = $("#price").val();
-            var dimension = $("#dimension").val();
-            var description = $("#description").val();
-            var img_url = $("#img_url").val();
-            $.ajax({
-                type: "get",
-                url: "{{ url('/admin/product/show/store_product') }}",
-                data: {
-                    category: category,
-                    type: type,
-                    name: name,
-                    brand: brand,
-                    price: price,
-                    dimension: dimension,
-                    description: description,
-                    img_url: img_url
-                },
-                success:function(data){
-                    $("#page").html('');
-                }
-
-            })
+            
         }
     </script>
 @endsection

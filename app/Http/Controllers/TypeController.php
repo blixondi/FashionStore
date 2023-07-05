@@ -21,7 +21,7 @@ class TypeController extends Controller
     public function indexadmin()
     {
         $type = Type::all();
-        return view('admin.admintype',compact('type'));
+        return view('admin.type.admintype',compact('type'));
     }
 
         /**
@@ -42,7 +42,14 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $type = Type::where('name',$request->name)->first();
+        if($type){
+            return back()->withInput()->with("message","category with the same name already exist!") ;
+        }
+        $type = new Type();
+        $type->name=$request->name;
+        $type->save();
+        return redirect()->route('type.index')->with("message","insert successfull");
     }
 
     /**
