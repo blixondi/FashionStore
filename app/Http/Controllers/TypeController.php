@@ -99,8 +99,14 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $data = Type::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Tipe berhasil di hapus'
+        ), 200);
     }
 }

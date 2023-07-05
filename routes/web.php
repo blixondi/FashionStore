@@ -38,6 +38,7 @@ Route::get('/admin/product/show/store_product',[ProductController::class,'admins
 Route::get('/admin/customer',[CustomerController::class,'indexadmin'])->name('admcustomer.index');
 Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.index');
 Route::get('/admin/type/editform/{type}',[TypeController::class,'adminedit']);
+Route::post('/admin/deletetype', [TypeController::class, 'destroy'])->name('type.delete');
 
 Route::get('/admin/update_category/{id}', [CategoryController::class, 'updateCat']);
 Route::get('/admin/update_customer/{id}', [CustomerController::class, 'updateCust']);

@@ -92,21 +92,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        return ('hlao'); 
 
     }
     public function adminstore(Request $request)
     {
-        $product = new Product();
-        $product->categories_id = $request->category;
-        $product->types_id = $request->type;
-        $product->name = $request->name;
-        $product->brand= $request->brand;
-        $product->price = $request->price;
-        $product->dimension = $request->dimension;
-        $product->description = $request->description;
-        $product->img_url = $request->img_url;
-        $product->save();
-        return redirect()->route("indexadmin")->with("message", "Insert Successfull");
+
     }
     /**
      * Display the specified resource.

@@ -114,6 +114,8 @@
             </div>
         </div>
     </div>
+    {{-- Modal Create --}}
+  
 @endsection
 @section('script')
     <script>
@@ -153,9 +155,8 @@
 
             });
         }
-
-        function store() {
-            
+        function store(){
+            $("#form-store").submit();
         }
     </script>
 @endsection

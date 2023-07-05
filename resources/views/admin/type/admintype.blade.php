@@ -1,9 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <button class="btn btn-success" id="add-type" onclick="create()">Tambah Tipe</button>
+
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">List Kategori</h5>
+        <button class="btn btn-success" id="add-type" onclick="create()">Tambah Tipe</button>
         <div class="card">
             <div class="card-body p-4">
                 <table class="table text-nowrap mb-0 align-middle">
@@ -22,16 +23,14 @@
                                 <h6 class="fw-semibold mb-0">Updated at</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Edit</h6>
+                                <h6 class="fw-semibold mb-0">Action</h6>
                             </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Delete</h6>
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($type as $t)
-                            <tr>
+                            <tr id="tr_{{$t->id}}">
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">{{ $t->id }}</h6>
                                 </td>
@@ -54,7 +53,7 @@
                                         class="btn btn-secondary m-1">Edit</button>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <button type="button" id="details" class="btn btn-secondary m-1">Test</button>
+                                    <button type="button" id="details" onclick="destroy({{$t->id}})" class="btn btn-danger m-1">Delete</button>
                                 </td>
 
                             </tr>
@@ -135,7 +134,21 @@
         function update(){
             $("#form-update").submit();
         }
-
+        function destroy(id) {
+            $.post({
+                type: 'POST',
+                url: '{{route('type.delete')}}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id
+                },
+                success: function(data) {
+                    if (data.status == 'oke') {
+                        $('#tr_' + id).remove();
+                    }
+                }
+            });
+        }
 
 </script>
 

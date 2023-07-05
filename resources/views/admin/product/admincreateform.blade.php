@@ -1,5 +1,6 @@
-<form>
-
+<form id="form-store" action="{{route('products.store')}}">
+    @method('POST')
+    @csrf
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">kategori</label>
       <select class="form-select" name="category">
@@ -41,5 +42,5 @@
         <input type="text" name="img_url" class="form-control" id="exampleInputEmail1" aria-describedby="textHelp">
       </div>
 
-    <button type="submit" onclick="store()" class="btn btn-primary">Submit</button>
+      <button type="submit" onclick="store()" class="btn btn-primary">Tambah Produk</button>
 </form>
