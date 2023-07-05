@@ -30,12 +30,16 @@ Route::get('/admin', function(){
     return view('admin.adminhome');
 });
 Route::get('/admin/category',[CategoryController::class,'indexadmin'])->name('admcategory.index');
+
 Route::get('/admin/product',[ProductController::class,'indexadmin'])->name('admproduct.index');
 Route::get('/admin/product/{id}',[ProductController::class,'adminshow'])->name('admproduct.detail');
 Route::get('/admin/product/show/edit_product/{id}',[ProductController::class,'adminedit']);
 Route::get('/admin/product/show/create_product',[ProductController::class,'admincreate']);
-Route::get('/admin/product/show/store_product',[ProductController::class,'adminstore']);
+Route::post('/admin/product/show/store_product',[ProductController::class,'store'])->name('products.store');
+Route::post('/admin/productdelete', [ProductController::class,'destroy'])->name('products.delete');
+
 Route::get('/admin/customer',[CustomerController::class,'indexadmin'])->name('admcustomer.index');
+
 Route::get('/admin/type',[TypeController::class,'indexadmin'])->name('admtype.index');
 Route::get('/admin/type/editform/{type}',[TypeController::class,'adminedit']);
 Route::post('/admin/deletetype', [TypeController::class, 'destroy'])->name('type.delete');

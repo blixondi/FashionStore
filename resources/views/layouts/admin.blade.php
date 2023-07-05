@@ -39,7 +39,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admcategory.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-menu"></i>
                                 </span>
                                 <span class="hide-menu">Kategori</span>
                             </a>
@@ -47,7 +47,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admproduct.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-package"></i>
                                 </span>
                                 <span class="hide-menu">Produk</span>
                             </a>
@@ -55,7 +55,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admtype.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-menu"></i>
                                 </span>
                                 <span class="hide-menu">Tipe</span>
                             </a>
@@ -63,7 +63,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admcustomer.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                    <i class="ti ti-user"></i>
                                 </span>
                                 <span class="hide-menu">Customer</span>
                             </a>
@@ -90,22 +90,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                                <i class="ti ti-bell-ringing"></i>
-                                <div class="notification bg-primary rounded-circle"></div>
-                            </a>
+                            
                         </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                            <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/"
-                                target="_blank" class="btn btn-primary">Download Free</a>
+
                             <li class="nav-item dropdown">
-                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('/assets/be/images/profile/user-1.jpg') }}" alt=""
-                                        width="35" height="35" class="rounded-circle">
-                                </a>
+
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                     aria-labelledby="drop2">
                                     <div class="message-body">

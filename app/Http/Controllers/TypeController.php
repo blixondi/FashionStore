@@ -50,7 +50,7 @@ class TypeController extends Controller
         $type = new Type();
         $type->name=$request->name;
         $type->save();
-        return redirect()->route('type.indexadmin')->with("message","insert successfull");
+        return redirect()->route('admtype.index')->with("message","insert successfull");
     }
 
     /**

@@ -92,8 +92,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return ('hlao'); 
-
+        $product = new Product();
+        $product->categories_id = $request->category;
+        $product->types_id = $request->type;
+        $product->name = $request->name;
+        $product->brand= $request->brand;
+        $product->price = $request->price;
+        $product->dimension = $request->dimension;
+        $product->description = $request->description;
+        $product->img_url = $request->img_url;
+        $product->save();
+        return redirect()->route("admproduct.index")->with("message", "Insert Successfull");
     }
     public function adminstore(Request $request)
     {
@@ -151,8 +160,14 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->get('id');
+        $data = Product::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Tipe berhasil di hapus'
+        ), 200);
     }
 }

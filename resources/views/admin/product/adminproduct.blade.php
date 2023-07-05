@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 
 @section('content')
-    <button class="btn btn-success" onclick="create()">Tambah Kategori</button>
-    @foreach ($category as $c)
-        <div class="card-body">
-
-            <h5 class="card-title fw-semibold mb-4">{{ $c->name }}</h5>
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Daftar Produk</h5>
+        <button class="btn btn-success" onclick="create()">Tambah Kategori</button>
+        @foreach ($category as $c)
             <div class="card">
+
                 <div class="card-body p-4">
+                    <h5 class="card-title fw-semibold mb-4">{{ $c->name }}</h5>
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
                             <tr>
@@ -33,7 +34,7 @@
                         <tbody>
                             @foreach ($product as $p)
                                 @if ($c->id == $p->categories_id)
-                                    <tr>
+                                    <tr id="tr_{{ $p->id }}">
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0">{{ $p->id }}</h6>
                                         </td>
@@ -55,7 +56,10 @@
                                             <button type="button" class="btn btn-secondary m-1"
                                                 onclick="show({{ $p->id }})">Edit</button>
                                         </td>
-
+                                        <td class="border-bottom-0">
+                                            <button type="button" onclick="destroy({{ $p->id }})"
+                                                class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
+                                        </td>
 
                                     </tr>
                                 @endif
@@ -66,35 +70,60 @@
                     </table>
                 </div>
             </div>
-        </div>
-    @endforeach
+        @endforeach
+    </div>
+
 
 
     <!-- Modal details -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>ID : <span id="product-id"></span></p>
-                    <p>Name : <span id="product-name"></span></p>
-                    <p>Category : <span id="product-category"></span></p>
-                    <p>Type : <span id="product-type"></span></p>
-                    <p>Brand : <span id="product-brand"></span></p>
-                    <p>Price : <span id="product-price"></span></p>
-                    <p>Dimension : <span id="product-dimension"></span></p>
-                    <p>Description : <span id="product-description"></span></p>
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>ID : <span id="product-id"></span></p>
+                                            <p>Name : <span id="product-name"></span></p>
+                                            <p>Category : <span id="product-category"></span></p>
+                                            <p>Type : <span id="product-type"></span></p>
+                                            <p>Brand : <span id="product-brand"></span></p>
+                                            <p>Price : Rp.<span id="product-price"></span>,00</p>
+                                            <p>Dimension : <span id="product-dimension"></span> cm</p>
+                                            <p>Description : <span id="product-description"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <img id="product-image" class="card-img-top">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                 </div>
             </div>
         </div>
+
+
     </div>
 
     <!-- Modal edit-->
@@ -115,7 +144,6 @@
         </div>
     </div>
     {{-- Modal Create --}}
-  
 @endsection
 @section('script')
     <script>
@@ -141,7 +169,7 @@
                     $('#product-price').text(data[0].price);
                     $('#product-dimension').text(data[0].dimension);
                     $('#product-description').text(data[0].description);
-                    $('#product-image').text(data[0].img_url);
+                    $('#product-image').attr('src', data[0].img_url);
 
                 })
             })
@@ -155,8 +183,25 @@
 
             });
         }
-        function store(){
+
+        function store() {
             $("#form-store").submit();
+        }
+
+        function destroy(id) {
+            $.post({
+                type: 'POST',
+                url: '{{ route('products.delete') }}',
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id
+                },
+                success: function(data) {
+                    if (data.status == 'oke') {
+                        $('#tr_' + id).remove();
+                    }
+                }
+            });
         }
     </script>
 @endsection

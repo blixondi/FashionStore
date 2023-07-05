@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="card-body">
-        <h5 class="card-title fw-semibold mb-4">List Kategori</h5>
+        <h5 class="card-title fw-semibold mb-4">Daftar Tipe</h5>
         <button class="btn btn-success" id="add-type" onclick="create()">Tambah Tipe</button>
         <div class="card">
             <div class="card-body p-4">
@@ -53,7 +53,7 @@
                                         class="btn btn-secondary m-1">Edit</button>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <button type="button" id="details" onclick="destroy({{$t->id}})" class="btn btn-danger m-1">Delete</button>
+                                    <button type="button" id="details" onclick="destroy({{$t->id}})" class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
                                 </td>
 
                             </tr>
