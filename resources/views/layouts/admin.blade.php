@@ -8,6 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('/assets/be/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/be/css/styles.min.css') }}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -150,6 +151,7 @@
     <script src="{{ asset('/assets/be/libs/simplebar/dist/simplebar.js') }}"></script>
 
     @yield('script')
+
 </body>
 
 </html>

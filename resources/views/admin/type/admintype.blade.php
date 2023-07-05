@@ -48,6 +48,15 @@
                                         <span class="badge bg-primary rounded-3 fw-semibold">{{ $t->updated_at }}</span>
                                     </div>
                                 </td>
+                                <td class="border-bottom-0">
+                                    <button type="button" id="btn-edit"
+                                       onclick="edit({{$t->id}})"
+                                        class="btn btn-secondary m-1">Edit</button>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <button type="button" id="details" class="btn btn-secondary m-1">Test</button>
+                                </td>
+
                             </tr>
                         @endforeach
 
@@ -85,8 +94,30 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+{{-- modal edit --}}
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Edit Type</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-update"class="btn btn-secondary m-1" onclick="update()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
+
     <script>
         function create() {
             $("#modalCreate").modal("show");
@@ -94,25 +125,18 @@
         function store(){
             $("#form-store").submit();
         }
-        function edit(){
-            $.post("{{url('update2')}}/" + updateId,{
-                
-            })
+        function edit(id){
+            updateId = id
+            $.get("{{url('/admin/type/editform')}}/"+ id,function (data) {
+                $("#modalEdit .modal-body").html(data)
+                $("#modalEdit").modal("show");
+            });
         }
-        $("#btn-update2").on("click",function(){
-                $.post("{{url('update2')}}/" + updateId,{
-                    name:$("#form-update [name='name']").val(),
-                    _token:$("#form-update [name='_token']").val()
-                },function(response){
-                    if(response.status == "oke"){
-                        $("#td-name-" + response.data.id).html(response.data.name);
-                    }
-                    $("#modalUpdate2").modal("hide");
-                })
-            })
-        $(document).ready(function() {
+        function update(){
+            $("#form-update").submit();
+        }
 
-        });
 
-    </script>
+</script>
+
 @endsection

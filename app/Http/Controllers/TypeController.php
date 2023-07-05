@@ -16,7 +16,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $type = Type::all();
+        return view('admin.type.admintype',compact('type'));
     }
     public function indexadmin()
     {
@@ -49,7 +50,7 @@ class TypeController extends Controller
         $type = new Type();
         $type->name=$request->name;
         $type->save();
-        return redirect()->route('type.index')->with("message","insert successfull");
+        return redirect()->route('type.indexadmin')->with("message","insert successfull");
     }
 
     /**
@@ -73,6 +74,10 @@ class TypeController extends Controller
     {
         //
     }
+    public function adminedit(Type $type)
+    {
+        return view("admin.type.admineditform   ",compact("type"));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -83,7 +88,9 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $type->name = $request->name;
+        $type->save();
+        return redirect()->route('type.index')->with("message","insert successfull");
     }
 
     /**
