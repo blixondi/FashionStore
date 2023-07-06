@@ -53,8 +53,9 @@
                                                 class="btn btn-secondary m-1">Details</button>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <button type="button" class="btn btn-secondary m-1"
-                                                onclick="show({{ $p->id }})">Edit</button>
+                                            <button type="button" id="btn-edit"
+                                               onclick="edit({{$p->id}})"
+                                                class="btn btn-secondary m-1">Edit</button>
                                         </td>
                                         <td class="border-bottom-0">
                                             <button type="button" onclick="destroy({{ $p->id }})"
@@ -127,7 +128,26 @@
     </div>
 
     <!-- Modal edit-->
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Edit Product</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-update"class="btn btn-secondary m-1" onclick="update()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div><div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -202,6 +222,16 @@
                     }
                 }
             });
+        }
+        function edit(id){
+            updateId = id
+            $.get("{{url('/admin/product/edit')}}/"+ id,function (data) {
+                $("#modalEdit .modal-body").html(data)
+                $("#modalEdit").modal("show");
+            });
+        }
+        function update(){
+            $("#form-update").submit();
         }
     </script>
 @endsection

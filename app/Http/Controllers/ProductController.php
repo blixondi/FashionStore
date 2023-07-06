@@ -138,9 +138,11 @@ class ProductController extends Controller
     {
         //
     }
-    public function adminedit($id)
+    public function adminedit(Product $product)
     {
-        return view('admin.product.admineditform');
+        $category = Category::all();
+        $types = Type::all();
+        return view('admin.product.admineditformp',compact('product','category','types'));
     }
     /**
      * Update the specified resource in storage.
@@ -151,7 +153,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->categories_id = $request->category;
+        $product->types_id = $request->type;
+        $product->name = $request->name;
+        $product->brand = $request->brand;
+        $product->price = $request->price;
+        $product->dimension = $request->dimension;
+        $product->description = $request->description;
+        $product->img_url = $request->image;
+        $product->save();
+        return redirect()->route('admproduct.index')->with("message","insert successfull");
     }
 
     /**

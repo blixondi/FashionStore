@@ -33,7 +33,9 @@ Route::get('/admin/category',[CategoryController::class,'indexadmin'])->name('ad
 
 Route::get('/admin/product',[ProductController::class,'indexadmin'])->name('admproduct.index');
 Route::get('/admin/product/{id}',[ProductController::class,'adminshow'])->name('admproduct.detail');
-Route::get('/admin/product/show/edit_product/{id}',[ProductController::class,'adminedit']);
+Route::get('/admin/product/edit/{product}',[ProductController::class,'adminedit']);
+Route::post('/admin/product/update/{product}',[ProductController::class,'update'])->name('product.update');
+
 Route::get('/admin/product/show/create_product',[ProductController::class,'admincreate']);
 Route::post('/admin/product/show/store_product',[ProductController::class,'store'])->name('products.store');
 Route::post('/admin/productdelete', [ProductController::class,'destroy'])->name('products.delete');
