@@ -8,6 +8,9 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('/assets/be/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/be/css/styles.min.css') }}" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
 
 </head>
 
@@ -90,7 +93,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            
+
                         </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
