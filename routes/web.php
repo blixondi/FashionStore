@@ -70,6 +70,10 @@ Route::get('/cart', [CustomerController::class, "cart"]);
 Route::post('/checkout', [CustomerController::class, "checkout"]);
 
 
-Route::get('/profile', [CustomerController::class, "checkTransaction"]);
+Route::get('/profile', [CustomerController::class, "checkTransaction"])->name('profile');
+Route::get('/profile/edit', [CustomerController::class, "editProfile"]);
+Route::put('/profile/update', [CustomerController::class, "updateProfile"]);
+
+
 
 Route::get('/transaction/{id}', [CustomerController::class, "detailTransaction"]);
