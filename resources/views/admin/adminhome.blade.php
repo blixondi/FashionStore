@@ -4,15 +4,15 @@
     @if ($transaction)
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title mb-9 fw-semibold"> Pelanggan dengan transaksi terbanyak </h5>
+                <h1 class="mb-9 fw-semibold"> Pelanggan dengan transaksi terbanyak </h1>
             </div>
             <div class="card-body">
                 <div class="row alig n-items-start">
                     <div class="col-8">
-                        <h5 class="card-title mb-9 fw-semibold">{{ $transaction[0]->username }} </h5>
+                        <h2 class="mb-9 fw-semibold">{{ Str::ucfirst($transaction[0]->fname) }} {{ Str::ucfirst($transaction[0]->lname) }} </h2>
                         <h4 class="fw-semibold mb-3">{{ $transaction[0]->total_pembelian }} Transaksi</h4>
                         <div class="d-flex align-items-center pb-1">
-                            <p class="fs-3 mb-0">{{ $transaction[0]->username }} melakukan transaksi paling banyak</p>
+                            <p class="fs-3 mb-0">{{ Str::ucfirst($transaction[0]->fname) }} {{ Str::ucfirst($transaction[0]->lname) }} melakukan transaksi paling banyak</p>
                         </div>
                     </div>
                     <div class="col-4">
@@ -30,21 +30,21 @@
     @endif
     <div class="card">
         <div class="card-header">
-            <h5 class="card-title mb-9 fw-semibold">Transaksi Terbaru</h5>
+            <h1 class="mb-9 fw-semibold">Transaksi Terbaru</h1>
         </div>
         <div class="card-body">
             @if ($transactionnow)
                 @foreach ($transactionnow as $tn)
                     <ul class="timeline-widget mb-0 position-relative mb-n5">
                         <li class="timeline-item d-flex position-relative overflow-hidden">
-                            <div class="timeline-time text-dark flex-shrink-0 text-end">{{ $tn->jam }} :
+                            <div class="timeline-time text-dark flex-shrink-0 text-end">{{$tn->tanggal}} {{ $tn->jam }} :
                                 {{ $tn->menit }}</div>
                             <div class="timeline-badge-wrap d-flex flex-column align-items-center">
                                 <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                                 <span class="timeline-badge-border d-block flex-shrink-0"></span>
                             </div>
                             <div class="timeline-desc fs-3 text-dark mt-n1">
-                                {{ $tn->fname }}{{ $tn->lname }} Membeli produk {{ $tn->name }}
+                                {{ Str::ucfirst($tn->fname) }} {{ Str::ucfirst($tn->lname) }} membeli produk <strong>{{ Str::ucfirst($tn->name) }}</strong>
                             </div>
                         </li>
                     </ul>
