@@ -19,6 +19,8 @@
         onload="this.rel='stylesheet'" />
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -92,7 +94,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link position-relative d-flex flex-row align-items-center" href="/cart">
                                         <i class="uil uil-shopping-cart"></i>
-                                        {{-- <span class="badge badge-cart bg-primary">{{session('cart')}}</span> --}}
+                                        @if(is_countable(session('cart')))
+                                        <span class="badge badge-cart bg-primary">{{count(session('cart'))}}</span>
+                                        @else
+                                        <span class="badge badge-cart bg-primary">0</span>
+                                        @endif
                                     </a>
                                 </li>
                                 <li class="nav-item d-lg-none">
