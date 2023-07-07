@@ -95,9 +95,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
-        $file = $request->file('img');
-        $imgFolder = 'images';
-        $imgFile=time()."_".$file->getClientOriginalName();
+
+
         $product->categories_id = $request->category;
         $product->types_id = $request->type;
         $product->name = $request->name;
@@ -105,7 +104,14 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->dimension = $request->dimension;
         $product->description = $request->description;
-        $product->img_url = $request->img_url;
+        // $product->img_url = $request->img_url;
+
+        $file = $request->file('img');
+        $imgFolder = 'assets/img/products/';
+        $imgFile=$file->getClientOriginalName();
+        $file->move($imgFolder,$imgFile);
+        $product->img_url = $imgFile;
+
         $product->save();
         return redirect()->route("admproduct.index")->with("message", "Insert Successfull");
     }
@@ -165,7 +171,15 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->dimension = $request->dimension;
         $product->description = $request->description;
-        $product->img_url = $request->image;
+        $file = $request->file('img');
+        if ($file) {
+            $file = $request->file('img');
+            $imgFolder = 'assets/img/products/';
+            $imgFile=$file->getClientOriginalName();
+            $file->move($imgFolder,$imgFile);
+            $product->img_url = $imgFile;
+        }
+
         $product->save();
         return redirect()->route('admproduct.index')->with("message","insert successfull");
     }
