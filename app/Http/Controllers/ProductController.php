@@ -95,6 +95,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
+        $file = $request->file('img');
+        $imgFolder = 'images';
+        $imgFile=time()."_".$file->getClientOriginalName();
         $product->categories_id = $request->category;
         $product->types_id = $request->type;
         $product->name = $request->name;
