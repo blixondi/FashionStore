@@ -2,11 +2,10 @@
 @section("content")
 
 <div class="modal fade" id="modal-transaction" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title" id="exampleModalLabel">Detail Transaksi</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           ...
@@ -43,25 +42,21 @@
                                 <table class="table table-stripped">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>Waktu Pembelian</th>
+                                            <th>Total Belanja</th>
                                             <th>Poin yang Diperoleh</th>
                                             <th>Pajak</th>
-                                            <th>Total Belanja</th>
-                                            <th>Waktu Pembelian</th>
                                             <th>Detail Pembelian</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($transaction as $t)
                                             <tr>
-                                                <td>{{$t->id}}</td>
+                                                <td>{{$t->created_at}}</td>
+                                                <td>@currency($t->total)</td>
                                                 <td>{{$t->received_point}} poin</td>
                                                 <td>@currency($t->pajak)</td>
-                                                <td>@currency($t->total)</td>
-                                                <td>{{$t->created_at}}</td>
                                                 <td>
-                                                    {{-- <a href="#" class="btn btn-primary rounded-pill"
-                                                    data-bs-toggle="modal" data-bs-target="#modal-transaction">Detail</a> --}}
                                                     <a href="#" class="btn btn-primary rounded-pill"
                                                     data-bs-toggle="modal" onclick="showTransaction({{$t->id}})" data-bs-target="#modal-transaction">Detail</a></td>
                                             </tr>
