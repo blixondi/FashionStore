@@ -46,8 +46,8 @@
                                 </td>
                                 <td class="border-bottom-0">
                                     <button type="button" id="btn-edit" onclick="edit({{ $p->id }})"
-                                        class="btn btn-secondary m-1">Edit</button>
-                                    <button type="button" onclick="destroy({{ $p->id }})"
+                                        class="btn btn-success m-1">Ubah</button>
+                                    <button type="button" onclick="modalDeleteCat({{ $p->id }})"
                                         class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
                                 </td>
                             </tr>
@@ -64,17 +64,16 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Edit Product</h5>
+                    <h5 class="modal-title" id="modalTitle">Edit Produk</h5>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+
+
                 </div>
                 <div class="modal-body">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btn-update"class="btn btn-secondary m-1" onclick="update()">Update</button>
+
                 </div>
             </div>
         </div>
@@ -85,9 +84,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitle">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+
                 </div>
                 <div class="modal-body">
                     <div id="page" class="p-2"></div>
@@ -117,21 +114,41 @@
             $("#form-store").submit();
         }
 
-        function destroy(id) {
-            $.post({
-                type: 'POST',
-                url: '{{ route('products.delete') }}',
-                data: {
-                    '_token': '<?php echo csrf_token(); ?>',
-                    'id': id
-                },
-                success: function(data) {
-                    if (data.status == 'oke') {
-                        $('#tr_' + id).remove();
+        function modalDeleteCat(id) {
+            // $('#modalDeleteCat').modal('show');
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menghapus kategori ini?',
+                text: "Anda tidak bisa mengembalikan perubahan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya, saya yakin',
+                cancelButtonText: 'Batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post({
+                    type: 'POST',
+                    url: '{{ route('products.delete') }}',
+                    data: {
+                        '_token': '<?php echo csrf_token(); ?>',
+                        'id': id
+                    },
+                    success: function(data) {
+                        if (data.status == 'oke') {
+                            $('#tr_' + id).remove();
+                        }
                     }
+                });
+                    Swal.fire(
+                        'Berhasil Terhapus!',
+                        'Kategori berhasil terhapus.',
+                        'success'
+                    )
                 }
-            });
+            })
         }
+
 
         function edit(id) {
             updateId = id

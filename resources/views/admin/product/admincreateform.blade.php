@@ -47,4 +47,5 @@
     </div>
 
     <button type="submit" onclick="store()" class="btn btn-primary">Tambah Produk</button>
+    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
 </form>

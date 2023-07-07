@@ -40,18 +40,18 @@
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-primary rounded-3 fw-semibold">{{ $t->created_at }}</span>
+                                        <span class="badge bg-success rounded-3 fw-semibold">{{ $t->created_at }}</span>
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-primary rounded-3 fw-semibold">{{ $t->updated_at }}</span>
+                                        <span class="badge bg-secondary rounded-3 fw-semibold">{{ $t->updated_at }}</span>
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
                                     <button type="button" id="btn-edit" onclick="edit({{ $t->id }})"
-                                        class="btn btn-secondary m-1">Edit</button>
-                                    <button type="button" id="details" onclick="destroy({{ $t->id }})"
+                                        class="btn btn-success m-1">Ubah</button>
+                                    <button type="button" id="details" onclick="modalDeleteCat({{ $t->id }})"
                                         class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
                                 </td>
                             </tr>
@@ -69,7 +69,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+
                     <h4 class="modal-title">Tipe baru</h4>
                 </div>
                 <div class="modal-body">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="btn-insert" onclick="store()">Insert</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -98,9 +98,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Edit Type</h5>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="modalTitle">Ubah Tipe</h5>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -109,6 +107,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="btn-update"class="btn btn-secondary m-1" onclick="update()">Update</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
                 </div>
             </div>
         </div>
@@ -137,21 +136,39 @@
         function update() {
             $("#form-update").submit();
         }
-
-        function destroy(id) {
-            $.post({
-                type: 'POST',
-                url: '{{ route('type.delete') }}',
-                data: {
-                    '_token': '<?php echo csrf_token(); ?>',
-                    'id': id
-                },
-                success: function(data) {
-                    if (data.status == 'oke') {
-                        $('#tr_' + id).remove();
+        function modalDeleteCat(id) {
+            // $('#modalDeleteCat').modal('show');
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menghapus kategori ini?',
+                text: "Anda tidak bisa mengembalikan perubahan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya, saya yakin',
+                cancelButtonText: 'Batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post({
+                    type: 'POST',
+                    url: '{{ route('type.delete') }}',
+                    data: {
+                        '_token': '<?php echo csrf_token(); ?>',
+                        'id': id
+                    },
+                    success: function(data) {
+                        if (data.status == 'oke') {
+                            $('#tr_' + id).remove();
+                        }
                     }
+                });
+                    Swal.fire(
+                        'Berhasil Terhapus!',
+                        'Kategori berhasil terhapus.',
+                        'success'
+                    )
                 }
-            });
+            })
         }
     </script>
 @endsection

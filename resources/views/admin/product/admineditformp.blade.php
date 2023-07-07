@@ -65,6 +65,7 @@
         </div>
     </div>
 
-
+    <button type="button" id="btn-update"class="btn btn-secondary m-1" onclick="update()">Ubah</button>
+    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
 
 </form>

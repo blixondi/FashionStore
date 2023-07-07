@@ -42,7 +42,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ url('/admin') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-menu"></i>
+                                    <i class="ti ti-home"></i>
                                 </span>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
@@ -60,14 +60,6 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admproduct.index') }}" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-package"></i>
-                                </span>
-                                <span class="hide-menu">Produk</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admtype.index') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-menu"></i>
@@ -75,6 +67,15 @@
                                 <span class="hide-menu">Tipe</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admproduct.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-package"></i>
+                                </span>
+                                <span class="hide-menu">Produk</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admcustomer.index') }}" aria-expanded="false">
                                 <span>
