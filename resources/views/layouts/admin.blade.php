@@ -54,7 +54,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admcategory.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-menu"></i>
+                                    <i class="ti ti-category"></i>
                                 </span>
                                 <span class="hide-menu">Kategori</span>
                             </a>
@@ -62,7 +62,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admtype.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-menu"></i>
+                                    <i class="ti ti-tag"></i>
                                 </span>
                                 <span class="hide-menu">Tipe</span>
                             </a>
@@ -79,7 +79,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admcustomer.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-users"></i>
                                 </span>
                                 <span class="hide-menu">Pelanggan</span>
                             </a>
@@ -111,7 +111,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admowner.index') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-user"></i>
+                                    <i class="ti ti-crown"></i>
                                 </span>
                                 <span class="hide-menu">Pemilik</span>
                             </a>

@@ -18,9 +18,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboard(){
-        $transaction = DB::select(DB::raw('SELECT u.username, COUNT(t.id) AS total_pembelian FROM users u JOIN transactions t ON u.id = t.users_id GROUP BY u.id,u.username ORDER BY total_pembelian DESC'));
+        $transaction = DB::select(DB::raw('SELECT u.fname, u.lname, u.username, COUNT(t.id) AS total_pembelian FROM users u JOIN transactions t ON u.id = t.users_id GROUP BY u.id,u.username,u.fname,u.lname ORDER BY total_pembelian DESC'));
         // dd($transaction);
-        $transactionnow = DB::select(DB::raw('SELECT DISTINCT u.fname,u.lname, p.name, p.price, HOUR(t.created_at) as jam, MINUTE(t.created_at) as menit FROM transactions t INNER JOIN product_transaction pt ON t.id = pt.transaction_id INNER JOIN products p ON pt.product_id = p.id INNER JOIN users u ON t.users_id = u.id ORDER BY t.created_at DESC'));
+        $transactionnow = DB::select(DB::raw('SELECT DISTINCT u.fname,u.lname, p.name, p.price, HOUR(t.created_at) as jam, MINUTE(t.created_at) as menit, DATE(t.created_at) as tanggal FROM transactions t INNER JOIN product_transaction pt ON t.id = pt.transaction_id INNER JOIN products p ON pt.product_id = p.id INNER JOIN users u ON t.users_id = u.id ORDER BY t.created_at DESC'));
 
         return view('admin.adminhome',compact('transaction','transactionnow'));
     }
