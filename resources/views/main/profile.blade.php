@@ -1,5 +1,23 @@
 @extends('layouts.shop')
 @section("content")
+
+<div class="modal fade" id="modal-transaction" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Detail Transaksi</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="card">
     <div class="card-body">
         <div class="row text-center">
@@ -28,7 +46,7 @@
                                             <th>Id</th>
                                             <th>Poin yang Diperoleh</th>
                                             <th>Pajak</th>
-                                            <th>Total Belanja Sebelum Pajak</th>
+                                            <th>Total Belanja</th>
                                             <th>Waktu Pembelian</th>
                                             <th>Detail Pembelian</th>
                                         </tr>
@@ -41,38 +59,13 @@
                                                 <td>@currency($t->pajak)</td>
                                                 <td>@currency($t->total)</td>
                                                 <td>{{$t->created_at}}</td>
-                                                <td><a href="#">Detail</a></td>
+                                                <td>
+                                                    {{-- <a href="#" class="btn btn-primary rounded-pill"
+                                                    data-bs-toggle="modal" data-bs-target="#modal-transaction">Detail</a> --}}
+                                                    <a href="#" class="btn btn-primary rounded-pill"
+                                                    data-bs-toggle="modal" onclick="showTransaction({{$t->id}})" data-bs-target="#modal-transaction">Detail</a></td>
                                             </tr>
                                         @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="card shadow-lg">
-                            <div class="card-body">
-                                <h1 class="">Riwayat Poin</h1>
-                                <table class="table table-stripped">
-                                    <thead>
-                                        <tr>
-                                            <th>a</th>
-                                            <th>a</th>
-                                            <th>a</th>
-                                            <th>a</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{-- @foreach ($transaction->products as $t)
-                                            <tr>
-                                                <td>{{$t->id}}</td>
-                                                <td>{{$t->received_point}} poin</td>
-                                                <td>@currency($t->pajak)</td>
-                                                <td>@currency($t->total)</td>
-                                                <td>{{$t->created_at}}</td>
-                                                <td><a href="#">Detail</a></td>
-                                            </tr>
-                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -82,4 +75,16 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    function showTransaction(id){
+        let idtransaction = id
+        $.get("{{url('/transaction')}}/" + idtransaction, function(data){
+            $("#modal-transaction .modal-body").html(data);
+            $("#modal-transaction").show()
+        });
+    }
+</script>
 @endsection

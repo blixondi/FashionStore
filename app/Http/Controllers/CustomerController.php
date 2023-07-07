@@ -58,13 +58,18 @@ class CustomerController extends Controller
         return view("main.profile", compact('transaction'));
     }
 
-
+    function detailTransaction($id)
+    {
+        $transaction = Transaction::find($id);
+        return view('main.transactiondetail', compact("transaction"));
+    }
 
     #region
 
-    function indexadmin(){
+    function indexadmin()
+    {
         $users = User::all();
-        return view('admin.customer.admincustomer',compact('users'));
+        return view('admin.customer.admincustomer', compact('users'));
     }
 
 
@@ -73,7 +78,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $name = User::where("username", "=", $request->username)->first();
-        if($name){
+        if ($name) {
             return back()->withInput()->with("message", "Sudah ada");
         }
 
@@ -93,7 +98,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $user = User::where("id", "=", $id)->first();
-        return view('admin.customer.admcustform', ['users'=>$user]);
+        return view('admin.customer.admcustform', ['users' => $user]);
     }
 
     public function update(Request $request, $id)
@@ -120,8 +125,9 @@ class CustomerController extends Controller
         ), 200);
     }
 
-    public function updateCust($id){
+    public function updateCust($id)
+    {
         $user = User::where("id", "=", $id)->first();
-        return view('admin.customer.updateadmcust', ['users'=>$user]);
+        return view('admin.customer.updateadmcust', ['users' => $user]);
     }
 }

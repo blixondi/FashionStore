@@ -30,6 +30,7 @@
                                     <h6 class="fw-semibold mb-0">Delete</h6>
                                 </th>
 
+
                             </tr>
                         </thead>
                         <tbody>
@@ -56,12 +57,9 @@
                                             <button type="button" onclick="destroy({{ $p->id }})"
                                                 class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
                                         </td>
-
                                     </tr>
 
                             @endforeach
-
-
                         </tbody>
                     </table>
                 </div>
