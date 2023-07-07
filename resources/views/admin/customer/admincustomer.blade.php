@@ -98,7 +98,7 @@
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
     <div class="card-body">
-        <h5 class="card-title fw-semibold mb-4">Daftar Customer</h5>
+        <h5 class="card-title fw-semibold mb-4">Daftar Pelanggan</h5>
         <button class="btn btn-success" onclick="modalCreateCust()">Tambah Pelanggan</button>
         <div class="card">
             <div class="card-body p-4">

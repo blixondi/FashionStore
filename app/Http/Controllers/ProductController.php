@@ -104,7 +104,7 @@ class ProductController extends Controller
     public function deletecart(Request $request, Product $product)
     {
         $cart = session('cart');
-        dd($);
+        // dd($);
         // foreach($cart as $id => $value){
         //     if($value['id'] === $product->id){
         //         unset($cart[$id]);
