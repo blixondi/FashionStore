@@ -18,11 +18,15 @@ class CustomerController extends Controller
     }
 
 
-    function checkout()
+    function checkout(Request $request)
     {
         if (session('cart')) {
-            $t = new Transaction();
             $user = User::find(Auth::user()->id);
+            if($request->has('checkpoint')){
+                $user->point_member -= $request->point; 
+                $user->save();
+            }
+            $t = new Transaction();
             $t->users_id = Auth::user()->id;
             $t->pajak = 0;
             $t->total = 0;
@@ -38,10 +42,18 @@ class CustomerController extends Controller
                 $t->total += $subtotal;
                 $total += $subtotal;
             }
+            if($request->boolean('checkpoint')){
+                $t->received_point = floor($total / 100000);
+                $gainedpoint = floor($total/100000);
+                $total -= ($request->point * 10000);
+            }
+            else{
+                $t->received_point = floor($total / 100000);
+                $gainedpoint = floor($total/100000);
+            }
             $t->pajak = $total * 0.11;
-            $t->received_point = floor($total / 100000);
             $t->total = $total + ($total * 0.11);
-            $user->point_member += floor($total / 100000);
+            $user->point_member += $gainedpoint;
             $user->save();
             $t->save();
             session()->forget('cart');

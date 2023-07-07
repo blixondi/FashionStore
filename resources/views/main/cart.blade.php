@@ -89,8 +89,12 @@
                     <!-- /.row -->
                 </div>
                 <!-- /column -->
+                
                 <div class="col-lg-4">
+                  <form action="{{url('/checkout')}}" method="post">
+                    @csrf
                     <h3 class="mb-4">Keranjang</h3>
+                    <span class="badge bg-grape rounded-pill ms-1">1 poin: Rp. 10.000,00</span>
                     <div class="table-responsive">
                         <table class="table table-order">
                             <tbody>
@@ -102,32 +106,61 @@
                                     @endphp
                                     <td class="ps-0"><strong class="text-dark">Subtotal</strong></td>
                                     <td class="pe-0 text-end">
-                                        <p class="price">@currency($total)</p>
+                                        <p class="price" id='subtotal' subtotal="{{$total}}">@currency($total)</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ps-0"><strong class="text-dark">Pajak</strong></td>
                                     <td class="pe-0 text-end">
-                                        <p class="price">@currency($tax)</p>
+                                        <p class="price" id='tax' tax="{{$tax}}">@currency($tax)</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ps-0"><strong class="text-dark">Poin yang didapat</strong></td>
                                     <td class="pe-0 text-end">
-                                        <p class="price">{{ $point }}</p>
+                                        <p class="price" id='gainedpoint'>{{ $point }}</p>
                                     </td>
+                                </tr>
+                                <tr>
+                                  <td class="ps-0"><strong class="text-dark">Diskon poin</strong></td>
+                                  <td class="pe-0 text-end">
+                                      <p class="price text-red" id="diskon">@currency(0)</p>
+                                  </td>                                
                                 </tr>
                                 <tr>
                                     <td class="ps-0"><strong class="text-dark">Grand Total</strong></td>
                                     <td class="pe-0 text-end">
-                                        <p class="price text-dark fw-bold">@currency($grandtotal)</p>
+                                        <p class="price text-dark fw-bold" id='grandtotal' grandtotal="{{$grandtotal}}">@currency($grandtotal)</p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                        <span class="badge bg-grape rounded-pill ms-1">Jumlah poin : {{Auth::user()->point_member}} poin</span>
+                        <div class="col d-flex flex-row">
+                          <div>
+                            <div class="form-floating">
+                              @if(Auth::user()->point_member>0 && $total > 100000)
+                              <input id="point" type="number" class="form-control" placeholder="Poin" name="point" min="0" max="{{Auth::user()->point_member}}">
+                              <label for="textInputExample">Poin</label>
+                              @else
+                              <input disabled id="txtQty" type="number" class="form-control" placeholder="Poin" min="1">
+                              <label for="textInputExample">Poin</label>
+                              @endif
+                            </div>
+                            <!--/.form-select-wrapper -->
+                          </div>
+                          @if(Auth::user()->point_member > 0 && $total > 100000)
+                          <div class="flex-grow-2 mx-1">
+                            <input class="form-check-input ms-2" type="checkbox" value="" name="checkpoint[]"><span class="ms-1">Gunakan Poin</span>
+                          </div>
+                          @else
+                          <div class="flex-grow-2 mx-1">
+                            <input disabled class="form-check-input ms-2" type="checkbox" value=""><span class="ms-1">Gunakan Poin</span>
+                          </div>
+                          @endif
+                        </div>
+                        
                     </div>
-                    <form action="/checkout" method="post">
-                        @csrf
                         <input type="submit" value="Checkout" class="btn btn-primary rounded w-100 mt-4">
                     </form>
                 </div>
@@ -148,36 +181,32 @@
 @endsection
 @section('js')
     <script>
-        // $(document).ready(function(){
-        //   $("#btn-delete").on('click',function(){
-        //     let id = $(this).attr('id-item');
-        //     $.post("{{ url('deletecart') }}"+"/"+id,{
-        //       _token:"{{ csrf_token() }}",
-        //       itemid:id,
-        //     },function(data){
-        //       if (data.status == "oke"){
-        //         Swal.fire({
-        //           icon:"info",
-        //           title:data.pesan,
-        //         })
-        //       }
-        //     })
-        //   });
-        // })
-        function deleteCart() {
-            let id = $('#btn-delete').attr('id-item');
-            $.post("{{ url('/deletecart') }}/" + id, {
-                    _token: "{{ csrf_token() }}"
-                },
-                function(data) {
-                    if (data.status == "oke") {
-                        Swal.fire({
-                            icon: "info",
-                            title: data.pesan,
-                        })
-                    }
-                },
-            );
-        }
+       
+        $(document).ready(function () {
+          $("#point").on('change',function(){
+            let subtotal = $('#subtotal').attr('subtotal');
+            let tax = $('#tax').attr('tax');
+            let gainedpoint = $('#gainedpoint').attr('gainedpoint');
+            let grandtotal = $('#grandtotal').attr('grandtotal');
+            let ownedpoint = $('#point').val();
+
+            // alert(subtotal);
+            // alert(tax);
+            // alert(gainedpoint);
+            // alert(grandtotal);
+            // alert(ownedpoint);
+
+            let totalDiskon = ownedpoint * 10000;
+            let newSubtotal = subtotal - totalDiskon;
+            $('#subtotal').html('Rp. ' + newSubtotal);
+            let newTax = newSubtotal * 0.11;
+            $('#tax').html('Rp. ' + newTax);
+            // let newGainedPoint = floor(newSubtotal / 100000);
+            $('#diskon').html('Rp. ' + totalDiskon);
+            let newGrandTotal = newSubtotal + newTax;
+            $('#grandtotal').html('Rp. ' + newGrandTotal);
+
+          });
+        });
     </script>
 @endsection
