@@ -101,18 +101,17 @@ class ProductController extends Controller
         session()->put('cart',$cart);
         return redirect()->route('cart');
     }
-    public function deletecart(Request $request, Product $product)
+    public function deletecart(Product $product)
     {
         $cart = session('cart');
-        dd($);
-        // foreach($cart as $id => $value){
-        //     if($value['id'] === $product->id){
-        //         unset($cart[$id]);
-        //     }
-        // }
-        // session()->push('cart',$cart);
-        // return response()->json(['status'=>'oke','pesan'=>'berhasil hapus item']);
-        // return redirect()->back();
+        foreach($cart as $key => $value){
+            if($value['id'] == $product->id){
+                unset($cart[$key]);
+            }
+        }
+        dd($cart);
+        session()->push('cart',$cart);
+        return response()->json(['status'=>'oke','pesan'=>'berhasil hapus item']);
     }
 
     /**

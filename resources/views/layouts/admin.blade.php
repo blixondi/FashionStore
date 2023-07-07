@@ -22,7 +22,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="./index.html" class="text-nowrap logo-img">
+                    <a href="{{ url('/') }}" class="text-nowrap logo-img">
                         <img src="{{ asset('assets/fe/img/FS-sm.png') }}"
                             srcset="{{ asset('assets/fe/img/FS-lg.png') }} 2x" alt="" width="180"
                             alt="" />
