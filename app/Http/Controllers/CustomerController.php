@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -84,7 +85,7 @@ class CustomerController extends Controller
 
         $user = new User();
         $user->username = $request->username;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->fname = $request->fname;
         $user->lname = $request->lname;
@@ -105,7 +106,7 @@ class CustomerController extends Controller
     {
         $user = User::where("id", "=", $id)->first();
         $user->username = $request->username;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->fname = $request->fname;
         $user->lname = $request->lname;

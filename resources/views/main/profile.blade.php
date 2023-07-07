@@ -17,6 +17,23 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modal-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Ubah Profile</h1>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <div class="card">
     <div class="card-body">
         <div class="row text-center">
@@ -80,6 +97,10 @@
             $("#modal-transaction .modal-body").html(data);
             $("#modal-transaction").show()
         });
+    }
+
+    function showProfile(id){
+        
     }
 </script>
 @endsection

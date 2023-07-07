@@ -108,7 +108,6 @@
                                     <h6 class="dropdown-item btn btn-primary rounded-pill dropdown-item"">Halo, {{ Auth::user()->fname }}</h6>
                                     <ul class="dropdown-menu">
                                       <li class="nav-item"><a class="dropdown-item" href="{{url('/profile')}}"><i class="uil uil-setting"></i> Pengaturan</a></li>
-                                      <li class="nav-item"><a class="dropdown-item" href="{{url('/cart')}}"><i class="uil uil-shopping-cart"></i> Keranjang</a></li>
                                       <li class="nav-item"><a href="{{ route('logout') }}" class="dropdown-item"
                                         onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"><i class="uil uil-signout"></i> Keluar</a>
