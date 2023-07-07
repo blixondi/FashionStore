@@ -152,8 +152,10 @@
                                 <td class="border-bottom-0">
                                     <button class="btn btn-success"
                                         onclick="modalEditCust({{ $u->id }})">Ubah</button>
+                                    @can('is-owner')
                                     <button class="btn btn-danger" onclick="modalDeleteCust({{ $u->id }})"><i
                                             class="ti ti-trash"></i></button>
+                                    @endcan
                                 </td>
                                 {{-- <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">

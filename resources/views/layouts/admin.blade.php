@@ -84,7 +84,7 @@
                                 <span class="hide-menu">Pelanggan</span>
                             </a>
                         </li>
-
+                        @can('is-owner')
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admstaff.index') }}" aria-expanded="false">
                                 <span>
@@ -102,7 +102,7 @@
                                 <span class="hide-menu">Pemilik</span>
                             </a>
                         </li>
-
+                        @endcan
 
                     </ul>
                 </nav>
