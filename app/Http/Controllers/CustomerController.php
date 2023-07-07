@@ -67,16 +67,28 @@ class CustomerController extends Controller
 
     #region
 
-    function indexadmin()
+    function indexcust()
     {
-        $users = User::all();
+        $users = User::all()->where('role','pembeli');
         return view('admin.customer.admincustomer', compact('users'));
+    }
+
+    function indexowner()
+    {
+        $users = User::all()->where('role','owner');
+        return view('admin.owner.adminowner', compact('users'));
+    }
+
+    function indexstaff()
+    {
+        $users = User::all()->where('role','staff');
+        return view('admin.staff.adminstaff', compact('users'));
     }
 
 
     #endregion
 
-    public function store(Request $request)
+    public function storeCust(Request $request)
     {
         $name = User::where("username", "=", $request->username)->first();
         if ($name) {
@@ -96,13 +108,53 @@ class CustomerController extends Controller
         return redirect()->route("admcustomer.index")->with("message", "Insert Successfull");
     }
 
+    public function storeStaff(Request $request)
+    {
+        $name = User::where("username", "=", $request->username)->first();
+        if ($name) {
+            return back()->withInput()->with("message", "Sudah ada");
+        }
+
+        $user = new User();
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->role = "staff";
+        $user->point_member = 0;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+        return redirect()->route("admstaff.index")->with("message", "Insert Successfull");
+    }
+
+    public function storeOwner(Request $request)
+    {
+        $name = User::where("username", "=", $request->username)->first();
+        if ($name) {
+            return back()->withInput()->with("message", "Sudah ada");
+        }
+
+        $user = new User();
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->role = "owner";
+        $user->point_member = 0;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+        return redirect()->route("admowner.index")->with("message", "Insert Successfull");
+    }
+
     public function edit($id)
     {
         $user = User::where("id", "=", $id)->first();
         return view('admin.customer.admcustform', ['users' => $user]);
     }
 
-    public function update(Request $request, $id)
+    public function updateAdmCust(Request $request, $id)
     {
         $user = User::where("id", "=", $id)->first();
         $user->username = $request->username;
@@ -113,6 +165,32 @@ class CustomerController extends Controller
         $user->phone_number = $request->phone_number;
         $user->save();
         return redirect()->route("admcustomer.index")->with("message", "Update Successfull");
+    }
+
+    public function updateAdmStaff(Request $request, $id)
+    {
+        $user = User::where("id", "=", $id)->first();
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+        return redirect()->route("admstaff.index")->with("message", "Update Successfull");
+    }
+
+    public function updateAdmOwner(Request $request, $id)
+    {
+        $user = User::where("id", "=", $id)->first();
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+        return redirect()->route("admowner.index")->with("message", "Update Successfull");
     }
 
     public function deleteData(Request $request)
@@ -130,6 +208,18 @@ class CustomerController extends Controller
     {
         $user = User::where("id", "=", $id)->first();
         return view('admin.customer.updateadmcust', ['users' => $user]);
+    }
+
+    public function updateStaff($id)
+    {
+        $user = User::where("id", "=", $id)->first();
+        return view('admin.staff.updateadmstaff', ['users' => $user]);
+    }
+
+    public function updateOwner($id)
+    {
+        $user = User::where("id", "=", $id)->first();
+        return view('admin.owner.updateadmowner', ['users' => $user]);
     }
 
     public function editProfile()

@@ -6,10 +6,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Buat Pelanggan</h4>
+                    <h4 class="modal-title">Buat Pemilik</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('customers.storeCust') }}" method="post" id="formInsert">
+                    <form action="{{ route('customers.storeOwner') }}" method="post" id="formInsert">
                         @csrf
                         <div class="mb-2">
                             <label for="exampleInputEmail1" class="form-label">Username</label>
@@ -59,7 +59,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ubah Pelanggan</h4>
+                    <h4 class="modal-title">Ubah Pemilik</h4>
                 </div>
                 <div class="modal-body">
                     Update Data 1
@@ -98,8 +98,8 @@
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
     <div class="card-body">
-        <h5 class="card-title fw-semibold mb-4">Daftar Pelanggan</h5>
-        <button class="btn btn-success" onclick="modalCreateCust()">Tambah Pelanggan</button>
+        <h5 class="card-title fw-semibold mb-4">Daftar Pemilik</h5>
+        <button class="btn btn-success" onclick="modalCreateCust()">Tambah Pemilik</button>
         <div class="card">
             <div class="card-body p-4">
                 <table class="table text-nowrap mb-0 align-middle" border=1 id="table">
@@ -197,7 +197,7 @@
         function modalDeleteCust(id) {
             // $('#modalDeleteCust').modal('show');
             Swal.fire({
-                title: 'Apakah Anda yakin ingin menghapus pelanggan ini?',
+                title: 'Apakah Anda yakin ingin menghapus pemilik ini?',
                 text: "Anda tidak bisa mengembalikan perubahan ini!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -222,7 +222,7 @@
                     });
                     Swal.fire(
                         'Berhasil Terhapus!',
-                        'Pelanggan berhasil terhapus.',
+                        'Pemilik berhasil terhapus.',
                         'success'
                     )
                 }

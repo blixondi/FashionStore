@@ -81,7 +81,25 @@
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
-                                <span class="hide-menu">Customer</span>
+                                <span class="hide-menu">Pelanggan</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admstaff.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Staff</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admowner.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Pemilik</span>
                             </a>
                         </li>
 
