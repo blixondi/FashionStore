@@ -101,13 +101,17 @@
                                         @endif
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    
+                                </li>
                                 <li class="nav-item d-lg-none">
                                     <button class="hamburger offcanvas-nav-btn"><span></span></button>
                                 </li>
                                 <li class="nav-item dropdown d-none d-md-block">
-                                    <h6 class="dropdown-item btn btn-primary rounded-pill dropdown-item"">Halo, {{ Auth::user()->fname }}</h6>
+                                    <h6 class="dropdown-item btn btn-primary rounded-pill dropdown-item">Halo, {{ Auth::user()->fname}}</h6>
                                     <ul class="dropdown-menu">
                                       <li class="nav-item"><a class="dropdown-item" href="{{url('/profile')}}"><i class="uil uil-setting"></i> Pengaturan</a></li>
+                                      <li class="nav-item"><a class="dropdown-item" href="{{url('/promo')}}"><i class="uil uil-award"></i> Tukar Poin</a></li>
                                       @can('is-admin')
                                       <li class="nav-item"><a class="dropdown-item" href="{{url('/admin')}}"><i class="uil uil-user-md"></i> Admin</a></li>
                                       @endcan
