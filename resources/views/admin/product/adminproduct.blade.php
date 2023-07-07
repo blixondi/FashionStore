@@ -27,8 +27,6 @@
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Action</h6>
                                 </th>
-
-
                             </tr>
                         </thead>
                         <tbody>
@@ -61,12 +59,9 @@
                                             <button type="button" onclick="destroy({{ $p->id }})"
                                                 class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
                                         </td>
-
                                     </tr>
                                 @endif
                             @endforeach
-
-
                         </tbody>
                     </table>
                 </div>
