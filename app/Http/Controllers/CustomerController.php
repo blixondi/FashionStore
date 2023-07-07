@@ -131,4 +131,26 @@ class CustomerController extends Controller
         $user = User::where("id", "=", $id)->first();
         return view('admin.customer.updateadmcust', ['users' => $user]);
     }
+
+    public function editProfile()
+    {
+        $userid = Auth::user()->id;
+        $user = User::where("id", "=", $userid);
+        return view('main.editprofileform');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $user = User::where("id", "=", Auth::user()->id)->first();
+        $user->username = $request->username;
+        if($request->password){
+            $user->password = Hash::make($request->password);
+        }
+        $user->email = $request->email;
+        $user->fname = $request->fname;
+        $user->lname = $request->lname;
+        $user->phone_number = $request->phone_number;
+        $user->save();
+        return redirect()->route('profile')->with("message", "Update berhasil");
+    }
 }

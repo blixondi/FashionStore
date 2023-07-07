@@ -47,7 +47,8 @@
                             <h6 class="">{{Auth::user()->email}}</h6>
                             <p>{{Auth::user()->phone_number}}</p>
                             <p>{{Auth::user()->point_member}} poin</p>
-                            <button class="btn btn-primary">Sunting profil</button>
+                            <a href="#" class="btn btn-primary rounded-pill" id="btn-edit"
+                                data-bs-toggle="modal" onclick="showProfile()" data-bs-target="#modal-profile">Sunting Profil</a>
                         </div>
                     </div>
                 </div>
@@ -95,12 +96,15 @@
         let idtransaction = id
         $.get("{{url('/transaction')}}/" + idtransaction, function(data){
             $("#modal-transaction .modal-body").html(data);
-            $("#modal-transaction").show()
+            $("#modal-transaction").show();
         });
     }
 
-    function showProfile(id){
-        
+    function showProfile(){
+        $.get("{{url('/profile/edit')}}", function(data){
+            $("#modal-profile .modal-body").html(data);
+            $("#modal-profile").show();
+        });
     }
 </script>
 @endsection
