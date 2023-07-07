@@ -32,7 +32,7 @@ Route::get('/anak', [ProductController::class, 'index_anak'])->name('Anak');
 Route::resource("products", ProductController::class);
 
 
-Route::middleware(['can::access'])->group(function () {
+Route::middleware(['can:is-admin'])->group(function () {
     Route::get('/admin', [ProductController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/category', [CategoryController::class, 'indexadmin'])->name('admcategory.index');
     Route::get('/admin/product', [ProductController::class, 'indexadmin'])->name('admproduct.index');
