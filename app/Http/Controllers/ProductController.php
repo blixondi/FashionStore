@@ -50,9 +50,7 @@ class ProductController extends Controller
     public function indexadmin()
     {
         // $product = Product::with('category','type')->get();
-        $product = DB::select(DB::raw('SELECT p.id,p.categories_id,c.name as category ,t.name as type,p.name,p.brand,p.price,p.dimension,p.description,p.img_url,p.updated_at,p.created_at
-        FROM products p INNER JOIN categories c on p.categories_id = c.id
-        INNER JOIN types t ON p.types_id = t.id'));
+        $product = DB::select(DB::raw('SELECT p.id, p.categories_id, c.name AS category, t.name AS type, p.name, p.brand, p.price, p.dimension, p.description, p.img_url, p.updated_at, p.created_at FROM products p INNER JOIN categories c ON p.categories_id = c.id INNER JOIN types t ON p.types_id = t.id WHERE p.deleted_at IS NULL'));
         $category = Category::all();
         return view('admin.product.adminproduct', compact('product', 'category'));
     }
