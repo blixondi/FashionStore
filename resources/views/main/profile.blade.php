@@ -103,6 +103,7 @@
     function showProfile(){
         $.get("{{url('/profile/edit')}}", function(data){
             $("#modal-profile .modal-body").html(data);
+            let id = $("#btn-delete").attr('item-id');
             $("#modal-profile").show();
         });
     }
