@@ -34,9 +34,8 @@ Route::get('/pria', [ProductController::class, 'index_pria'])->name('Pria');
 Route::get('/wanita', [ProductController::class, 'index_wanita'])->name('Wanita');
 Route::get('/anak', [ProductController::class, 'index_anak'])->name('Anak');
 
-
+Route::get('/admin', [ProductController::class, 'dashboard'])->name('dashboard');
 Route::get('/admin/category', [CategoryController::class, 'indexadmin'])->name('admcategory.index');
-
 Route::get('/admin/product', [ProductController::class, 'indexadmin'])->name('admproduct.index');
 Route::get('/admin/product/{id}', [ProductController::class, 'adminshow'])->name('admproduct.detail');
 Route::get('/admin/product/edit/{product}', [ProductController::class, 'adminedit']);

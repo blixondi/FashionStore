@@ -1,4 +1,4 @@
-<form id="form-update" action="{{route('type.update',$type->id)}}" method="post">
+<form id="form-update" action="{{route('type.update',$type->id)}}" method="post" >
     @method("PUT")
     @csrf
       <div class="mb-3">

@@ -1,13 +1,14 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">Daftar Tipe</h5>
-        <button class="btn btn-success" id="add-type" onclick="create()">Tambah Tipe</button>
+        <div class="mb-2">
+            <button class="btn btn-success" id="add-type" onclick="create()">Tambah Tipe</button>
+        </div>
         <div class="card">
             <div class="card-body p-4">
-                <table class="table text-nowrap mb-0 align-middle">
+                <table class="table text-nowrap mb-0 align-middle" id="table">
                     <thead class="text-dark fs-4">
                         <tr>
                             <th class="border-bottom-0">
@@ -17,20 +18,20 @@
                                 <h6 class="fw-semibold mb-0">Nama</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Created at</h6>
+                                <h6 class="fw-semibold mb-0">TanggalPembuatan</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Updated at</h6>
+                                <h6 class="fw-semibold mb-0">TanggalPerubahan</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Action</h6>
+                                <h6 class="fw-semibold mb-0">Aksi</h6>
                             </th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($type as $t)
-                            <tr id="tr_{{$t->id}}">
+                            <tr id="tr_{{ $t->id }}">
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">{{ $t->id }}</h6>
                                 </td>
@@ -48,14 +49,11 @@
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <button type="button" id="btn-edit"
-                                       onclick="edit({{$t->id}})"
+                                    <button type="button" id="btn-edit" onclick="edit({{ $t->id }})"
                                         class="btn btn-secondary m-1">Edit</button>
+                                    <button type="button" id="details" onclick="destroy({{ $t->id }})"
+                                        class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
                                 </td>
-                                <td class="border-bottom-0">
-                                    <button type="button" id="details" onclick="destroy({{$t->id}})" class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
-                                </td>
-
                             </tr>
                         @endforeach
 
@@ -75,13 +73,14 @@
                     <h4 class="modal-title">Tipe baru</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('type.store')}}" id="form-store" method="post">
+                    <form action="{{ route('type.store') }}" id="form-store" method="post">
                         @method('POST')
                         @csrf
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label" >nama</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="textHelp">
-                      </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">nama</label>
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -93,7 +92,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-{{-- modal edit --}}
+    {{-- modal edit --}}
     <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -116,28 +115,33 @@
     </div>
 @endsection
 @section('script')
-
     <script>
+        new DataTable('#table');
+
         function create() {
             $("#modalCreate").modal("show");
         }
-        function store(){
+
+        function store() {
             $("#form-store").submit();
         }
-        function edit(id){
+
+        function edit(id) {
             updateId = id
-            $.get("{{url('/admin/type/editform')}}/"+ id,function (data) {
+            $.get("{{ url('/admin/type/editform') }}/" + id, function(data) {
                 $("#modalEdit .modal-body").html(data)
                 $("#modalEdit").modal("show");
             });
         }
-        function update(){
+
+        function update() {
             $("#form-update").submit();
         }
+
         function destroy(id) {
             $.post({
                 type: 'POST',
-                url: '{{route('type.delete')}}',
+                url: '{{ route('type.delete') }}',
                 data: {
                     '_token': '<?php echo csrf_token(); ?>',
                     'id': id
@@ -149,7 +153,5 @@
                 }
             });
         }
-
-</script>
-
+    </script>
 @endsection
