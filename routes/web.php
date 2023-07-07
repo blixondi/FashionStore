@@ -29,6 +29,7 @@ Route::get('/', function () {
 Route::get('/pria', [ProductController::class, 'index_pria'])->name('Pria');
 Route::get('/wanita', [ProductController::class, 'index_wanita'])->name('Wanita');
 Route::get('/anak', [ProductController::class, 'index_anak'])->name('Anak');
+Route::get('/promo', [ProductController::class, 'index_promo'])->name('Promo');
 Route::resource("products", ProductController::class);
 
 
