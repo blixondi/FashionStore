@@ -85,6 +85,12 @@
                             </a>
                         </li>
                         @can('is-owner')
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Owner Area</span>
+                        </li>
+
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admstaff.index') }}" aria-expanded="false">
                                 <span>
@@ -103,7 +109,24 @@
                             </a>
                         </li>
                         @endcan
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Logout</span>
+                        </li>
 
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('logout') }}" aria-expanded="false" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <span>
+                                    <i class="ti ti-logout"></i>
+                                </span>
+                                <span class="hide-menu">Logout</span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                class="d-none" hidden>
+                                @csrf
+                            </form>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
