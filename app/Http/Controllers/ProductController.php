@@ -17,6 +17,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function dashboard(){
+        $transaction = DB::select(DB::raw('SELECT u.username, COUNT(t.id) AS total_pembelian FROM users u JOIN transactions t ON u.id = t.users_id GROUP BY u.id,u.username ORDER BY total_pembelian DESC'));
+        // dd($transaction);
+        return view('admin.adminhome',compact('transaction'));
+    }
     public function index_pria()
     {
         $product = Product::where('categories_id', 1)->get();
@@ -172,7 +177,9 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->dimension = $request->dimension;
         $product->description = $request->description;
+
         $file = $request->file('img');
+
         if ($file) {
             $file = $request->file('img');
             $imgFolder = 'assets/img/products/';

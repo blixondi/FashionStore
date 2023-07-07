@@ -3,8 +3,9 @@
 @section('content')
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">Daftar Produk</h5>
-        <button class="btn btn-success" onclick="create()">Tambah Kategori</button>
-
+        <div class="mb-2">
+        <button class="btn btn-success" onclick="create()">Tambah Produk</button>
+    </div>
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">Daftar Produk</h5>
@@ -18,10 +19,10 @@
                                 <h6 class="fw-semibold mb-0">Nama</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Category</h6>
+                                <h6 class="fw-semibold mb-0">Kategori</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Type</h6>
+                                <h6 class="fw-semibold mb-0">Tipe</h6>
                             </th>
                             <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0">Aksi</h6>
@@ -48,7 +49,7 @@
                                         class="btn btn-secondary m-1">Edit</button>
                                     <button type="button" onclick="destroy({{ $p->id }})"
                                         class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
-                                </td>   
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -99,23 +100,15 @@
     <script>
         new DataTable('#table');
 
-        function show(id) {
-            $.get("{{ url('admin/product/show/edit_product') }}/" + id, {}, function(data, status) {
-                $("#modalTitle").html('Edit Produk');
-                $("#page").html(data);
-                $("#Modal").modal('show');
-
-            });
-        }
         $(document).ready(function() {
 
         });
 
         function create() {
             $.get("{{ url('admin/product/show/create_product') }}", {}, function(data, status) {
-                $("#modalTitle").html('Produk baru');
-                $("#page").html(data);
-                $("#Modal").modal('show');
+                $("#modalTitle").html('Tambah Produk');
+                $("#modalEdit .modal-body").html(data)
+                $("#modalEdit").modal("show");
 
             });
         }
@@ -143,6 +136,7 @@
         function edit(id) {
             updateId = id
             $.get("{{ url('/admin/product/edit') }}/" + id, function(data) {
+                $("#modalTitle").html('Edit Produk');
                 $("#modalEdit .modal-body").html(data)
                 $("#modalEdit").modal("show");
             });
