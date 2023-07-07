@@ -53,6 +53,8 @@ class ProductController extends Controller
     {
 
     }
+
+
     public function admincreate()
     {
         $category = Category::all();

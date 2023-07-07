@@ -36,7 +36,7 @@
           @foreach ($product as $p)
             <div class="project item col-md-6 col-xl-4">
                 <figure class="rounded mb-6">
-                    <a href="{{route('product.show',$p->id)}}">
+                    <a href="{{route('products.show',$p->id)}}">
                         <img src="{{asset("/assets/img/products/".$p->img_url)}}" alt="" />
                     </a>
                 </figure>
@@ -47,7 +47,7 @@
                 <div class="d-flex flex-row align-items-center justify-content-between mb-2">
                     <div class="post-category text-ash mb-0">{{$p->type->name}}</div>
                 </div>
-                <h2 class="post-title h3 fs-22"><a href="{{route('product.show',$p->id)}}" class="link-dark">{{Str::ucfirst($p->name)}}</a></h2>
+                <h2 class="post-title h3 fs-22"><a href="{{route('products.show',$p->id)}}" class="link-dark">{{Str::ucfirst($p->name)}}</a></h2>
                 <p class="price"><span class="amount">@currency($p->price)</span></p>
                 </div>
                 <!-- /.post-header -->

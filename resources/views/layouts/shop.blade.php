@@ -98,8 +98,8 @@
                                 <li class="nav-item d-lg-none">
                                     <button class="hamburger offcanvas-nav-btn"><span></span></button>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <h6 class="dropdown-item">Halo, {{ Auth::user()->fname }}</h6>
+                                <li class="nav-item dropdown d-none d-md-block">
+                                    <h6 class="dropdown-item btn btn-primary rounded-pill dropdown-item"">Halo, {{ Auth::user()->fname }}</h6>
                                     <ul class="dropdown-menu">
                                       <li class="nav-item"><a class="dropdown-item" href="{{url('/profile')}}"><i class="uil uil-setting"></i> Pengaturan</a></li>
                                       <li class="nav-item"><a class="dropdown-item" href="{{url('/cart')}}"><i class="uil uil-shopping-cart"></i> Keranjang</a></li>
@@ -114,15 +114,6 @@
                                     </ul>
                                   </li>
                                     <!--/.dropdown-menu -->
-                                <li class="nav-item d-none d-md-block">
-                                    <a href="{{ route('logout') }}" class="btn btn-primary rounded-pill"
-                                        onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">Logout</a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none" hidden>
-                                        @csrf
-                                    </form>
                                 </li>
                                 <li class="nav-item d-lg-none">
                                     <button class="hamburger offcanvas-nav-btn"><span></span></button>

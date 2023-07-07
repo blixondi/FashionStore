@@ -29,6 +29,12 @@ Route::get('/', function () {
 Route::get('/admin', function(){
     return view('admin.adminhome');
 });
+
+Route::get('/pria',[ProductController::class, 'index_pria'])->name('Pria');
+Route::get('/wanita',[ProductController::class, 'index_wanita'])->name('Wanita');
+Route::get('/anak',[ProductController::class, 'index_anak'])->name('Anak');
+
+
 Route::get('/admin/category',[CategoryController::class,'indexadmin'])->name('admcategory.index');
 
 Route::get('/admin/product',[ProductController::class,'indexadmin'])->name('admproduct.index');
@@ -52,22 +58,17 @@ Route::post('/admin/delete_category', [CategoryController::class, 'deleteData'])
 Route::post('/admin/delete_customer', [CustomerController::class, 'deleteData'])->name('customers.deleteData');
 
 
-Route::get('/pria',[ProductController::class, 'index_pria'])->name('Pria');
-Route::get('/wanita',[ProductController::class, 'index_wanita'])->name('Wanita');
-Route::get('/anak',[ProductController::class, 'index_anak'])->name('Anak');
 
 Route::resource("products", ProductController::class);
 Route::resource("categories", CategoryController::class);
 Route::resource("customers", CustomerController::class);
 Route::resource("type", TypeController::class);
 
-Route::get('/product',[ProductController::class,'indexcustomer'])->name('custproduct.index');
+// Route::get('/product',[ProductController::class,'indexcustomer'])->name('custproduct.index');
 Route::post("/product/addcart/{product}",[ProductController::class,"addcart"]);
 
 Route::get('/cart',[CustomerController::class,"cart"]);
 Route::post('/checkout',[CustomerController::class,"checkout"]);
 
-Route::get('/test', function(){
-    return view('main.twst');
-});
+
 Route::get('/profile',[CustomerController::class,"checkTransaction"]);
