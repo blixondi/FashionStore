@@ -61,7 +61,7 @@
                                                 <td>@currency($t->pajak)</td>
                                                 <td>@currency($t->total)</td>
                                                 <td>{{$t->created_at}}</td>
-                                                <td><button class="btn btn-primary" onclick="showTransaction({{$t->id}})">Detail</button></td>
+                                                <td><button id="testmodal" class="btn btn-primary" onclick="showTransaction({{$t->id}})">Detail</button></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -77,9 +77,15 @@
 
 @section('js')
 <script>
+    $(document).ready(function () {
+        $("#testmodal").on("click",function(){
+            $("#modalTransaction").show()
+        })
+    });
     function showTransaction(id){
-        $.get("{{url('/transaction')}}/" + id, function(data){
-            $("#modalTransaction .modal-body").html(data);
+        let idtransaction = id
+        $.get("{{url('/transaction')}}/" + idtransaction, function(data){
+            // $("#modalTransaction .modal-body").html(data);
             $("#modalTransaction").show()
         });
     }
