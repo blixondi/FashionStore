@@ -18,7 +18,7 @@
                         </div>
                         <div class="mb-2">
                             <label for="exampleInputEmail1" class="form-label">Password</label>
-                            <input type="text" name="password" class="form-control" id="exampleInputEmail1"
+                            <input type="password" name="password" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="textHelp">
                         </div>
                         <div class="mb-2">
@@ -59,13 +59,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Ubah Pemilik</h4>
+                    <h4 class="modal-title">Ubah Staff</h4>
                 </div>
                 <div class="modal-body">
                     Update Data 1
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="updateCustomer()">Simpan</button>
+                    <button type="button" class="btn btn-success" onclick="updateStaff()">Simpan</button>
                     <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
                 </div>
             </div>
@@ -98,8 +98,8 @@
     <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
     <div class="card-body">
-        <h5 class="card-title fw-semibold mb-4">Daftar Pemilik</h5>
-        <button class="btn btn-success" onclick="modalCreateCust()">Tambah Pemilik</button>
+        <h5 class="card-title fw-semibold mb-4">Daftar Staff</h5>
+        <button class="btn btn-success" onclick="modalCreateCust()">Tambah Staff</button>
         <div class="card">
             <div class="card-body p-4">
                 <table class="table text-nowrap mb-0 align-middle" border=1 id="table">
@@ -112,16 +112,13 @@
                                 <h6 class="fw-semibold mb-0">Username</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">First Name</h6>
+                                <h6 class="fw-semibold mb-0">Nama Depan</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Last Name</h6>
+                                <h6 class="fw-semibold mb-0">Nama Belakang</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Phone Number</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Point Member</h6>
+                                <h6 class="fw-semibold mb-0">Nomor Telepon</h6>
                             </th>
                             <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0">Aksi</h6>
@@ -147,11 +144,8 @@
                                     <h6 class="fw-semibold mb-1">{{ $u->phone_number }}</h6>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-1">{{ $u->point_member }}</h6>
-                                </td>
-                                <td class="border-bottom-0">
                                     <button class="btn btn-success"
-                                        onclick="modalEditCust({{ $u->id }})">Edit</button>
+                                        onclick="modalEditCust({{ $u->id }})">Ubah</button>
                                     <button class="btn btn-danger" onclick="modalDeleteCust({{ $u->id }})"><i
                                             class="ti ti-trash"></i></button>
                                 </td>
@@ -233,7 +227,7 @@
             $('#formInsert').submit();
         }
 
-        function updateCustomer() {
+        function updateStaff() {
             $('#form-update').submit();
         }
 

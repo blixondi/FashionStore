@@ -130,9 +130,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
+        $product = Product::where('name',$request->name)->first();
+        if($product){
+            return back()->withInput()->with("messege","produk dengan nama yang sama sudah ada!") ;
+        }
         $product = new Product();
-
-
         $product->categories_id = $request->category;
         $product->types_id = $request->type;
         $product->name = $request->name;
@@ -143,13 +146,16 @@ class ProductController extends Controller
         // $product->img_url = $request->img_url;
 
         $file = $request->file('img');
-        $imgFolder = 'assets/img/products/';
+        if ($file) {
+            $imgFolder = 'assets/img/products/';
         $imgFile=$file->getClientOriginalName();
         $file->move($imgFolder,$imgFile);
         $product->img_url = $imgFile;
+        }
+
 
         $product->save();
-        return redirect()->route("admproduct.index")->with("message", "Insert Successfull");
+        return redirect()->route("admproduct.index")->with("messege", "Berhasil menambahkan");
     }
     public function adminstore(Request $request)
     {
@@ -167,12 +173,13 @@ class ProductController extends Controller
     }
     public function adminshow($id)
     {
-        $product = DB::select(DB::raw("SELECT p.id, p.categories_id, c.name as category, t.name as type, p.name, p.brand, p.price, p.dimension, p.description, p.img_url, p.updated_at, p.created_at
-        FROM products p INNER JOIN categories c ON p.categories_id = c.id
-        INNER JOIN types t ON p.types_id = t.id
-        WHERE p.id = '".$id."'"));
+        // $product = DB::select(DB::raw("SELECT p.id, p.categories_id, c.name as category, t.name as type, p.name, p.brand, p.price, p.dimension, p.description, p.img_url, p.updated_at, p.created_at
+        // FROM products p INNER JOIN categories c ON p.categories_id = c.id
+        // INNER JOIN types t ON p.types_id = t.id
+        // WHERE p.id = '".$id."'"));
+        $product = Product::all();
 
-        return response()->json($product);
+        // return response()->json($product);
     }
 
     /**
@@ -235,7 +242,7 @@ class ProductController extends Controller
         $data->delete();
         return response()->json(array(
             'status' => 'oke',
-            'msg' => 'Tipe berhasil di hapus'
+            'msg' => 'Produk berhasil di hapus'
         ), 200);
     }
 }

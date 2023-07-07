@@ -18,7 +18,7 @@
                         </div>
                         <div class="mb-2">
                             <label for="exampleInputEmail1" class="form-label">Password</label>
-                            <input type="text" name="password" class="form-control" id="exampleInputEmail1"
+                            <input type="password" name="password" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="textHelp">
                         </div>
                         <div class="mb-2">
@@ -112,13 +112,13 @@
                                 <h6 class="fw-semibold mb-0">Username</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">First Name</h6>
+                                <h6 class="fw-semibold mb-0">Nama Depan</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Last Name</h6>
+                                <h6 class="fw-semibold mb-0">Nama Belakang</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Phone Number</h6>
+                                <h6 class="fw-semibold mb-0">Nomor Telepon</h6>
                             </th>
                             <th class="border-bottom-0">
                                 <h6 class="fw-semibold mb-0">Point Member</h6>
@@ -151,7 +151,7 @@
                                 </td>
                                 <td class="border-bottom-0">
                                     <button class="btn btn-success"
-                                        onclick="modalEditCust({{ $u->id }})">Edit</button>
+                                        onclick="modalEditCust({{ $u->id }})">Ubah</button>
                                     <button class="btn btn-danger" onclick="modalDeleteCust({{ $u->id }})"><i
                                             class="ti ti-trash"></i></button>
                                 </td>

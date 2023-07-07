@@ -34,6 +34,7 @@ Route::resource("products", ProductController::class);
 
 
 Route::middleware(['can:is-admin'])->group(function () {
+
     Route::get('/admin', [ProductController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/category', [CategoryController::class, 'indexadmin'])->name('admcategory.index');
     Route::get('/admin/product', [ProductController::class, 'indexadmin'])->name('admproduct.index');
@@ -41,9 +42,11 @@ Route::middleware(['can:is-admin'])->group(function () {
     Route::get('/admin/product/edit/{product}', [ProductController::class, 'adminedit']);
     Route::post('/admin/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
 
+
     Route::get('/admin/product/show/create_product', [ProductController::class, 'admincreate']);
     Route::post('/admin/product/show/store_product', [ProductController::class, 'store'])->name('products.store');
     Route::post('/admin/productdelete', [ProductController::class, 'destroy'])->name('products.delete');
+
 
     Route::get('/admin/customer', [CustomerController::class, 'indexcust'])->name('admcustomer.index');
     Route::get('/admin/staff', [CustomerController::class, 'indexstaff'])->name('admstaff.index');
@@ -53,15 +56,19 @@ Route::middleware(['can:is-admin'])->group(function () {
     Route::get('/admin/type/editform/{type}', [TypeController::class, 'adminedit']);
     Route::post('/admin/deletetype', [TypeController::class, 'destroy'])->name('type.delete');
 
+
     Route::get('/admin/update_category/{id}', [CategoryController::class, 'updateCat']);
+
 
     Route::post('/admin/create_customer', [CustomerController::class, 'storeCust'])->name('customers.storeCust');
     Route::post('/admin/create_staff', [CustomerController::class, 'storeStaff'])->name('customers.storeStaff');
     Route::post('/admin/create_owner', [CustomerController::class, 'storeOwner'])->name('customers.storeOwner');
 
-    Route::get('/admin/update_adm_customer/{id}', [CustomerController::class, 'updateAdmCust'])->name('customers.updateAdmCust');
-    Route::get('/admin/update_adm_staff/{id}', [CustomerController::class, 'updateAdmStaff'])->name('customers.updateAdmStaff');
-    Route::get('/admin/update_adm_owner/{id}', [CustomerController::class, 'updateAdmOwner'])->name('customers.updateAdmOwner');
+
+    Route::post('/admin/update_adm_customer/{id}', [CustomerController::class, 'updateAdmCust'])->name('customers.updateAdmCust');
+    Route::post('/admin/update_adm_staff/{id}', [CustomerController::class, 'updateAdmStaff'])->name('customers.updateAdmStaff');
+    Route::post('/admin/update_adm_owner/{id}', [CustomerController::class, 'updateAdmOwner'])->name('customers.updateAdmOwner');
+
 
     Route::get('/admin/update_customer/{id}', [CustomerController::class, 'updateCust']);
     Route::get('/admin/update_staff/{id}', [CustomerController::class, 'updateStaff']);

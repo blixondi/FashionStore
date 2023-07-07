@@ -1,5 +1,5 @@
 <form action="{{ route('customers.updateAdmStaff', $users->id) }}" method="post" id="form-update">
-    @method('PUT')
+    @method('post')
     @csrf
     <div class="mb-2">
         <label for="exampleInputEmail1" class="form-label">Username</label>

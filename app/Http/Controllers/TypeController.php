@@ -45,12 +45,12 @@ class TypeController extends Controller
     {
         $type = Type::where('name',$request->name)->first();
         if($type){
-            return back()->withInput()->with("message","category with the same name already exist!") ;
+            return back()->withInput()->with("messege","tipe dengan nama yang sama sudah ada!") ;
         }
         $type = new Type();
         $type->name=$request->name;
         $type->save();
-        return redirect()->route('admtype.index')->with("message","insert successfull");
+        return redirect()->route('admtype.index')->with("messege","berhasil menambah tipe");
     }
 
     /**
@@ -76,7 +76,7 @@ class TypeController extends Controller
     }
     public function adminedit(Type $type)
     {
-        return view("admin.type.admineditform   ",compact("type"));
+        return view("admin.type.admineditform",compact("type"));
     }
 
     /**
@@ -90,7 +90,7 @@ class TypeController extends Controller
     {
         $type->name = $request->name;
         $type->save();
-        return redirect()->route('type.index')->with("message","insert successfull");
+        return redirect()->route('type.index')->with("messege","update berhasil");
     }
 
     /**

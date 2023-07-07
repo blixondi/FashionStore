@@ -3,6 +3,15 @@
 @section('content')
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">Daftar Tipe</h5>
+        @if (session('messege') == 'tipe dengan nama yang sama sudah ada!')
+            <div class="alert alert-danger">
+                <strong>{{ session('messege') }}</strong>
+            </div>
+        @elseif (session('messege') == 'Berhasil menambah tipe')
+            <div class="alert alert-success">
+                <strong>{{ session('messege') }}</strong>
+            </div>
+        @endif
         <div class="mb-2">
             <button class="btn btn-success" id="add-type" onclick="create()">Tambah Tipe</button>
         </div>
@@ -99,7 +108,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitle">Ubah Tipe</h5>
-                        <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -136,10 +145,11 @@
         function update() {
             $("#form-update").submit();
         }
+
         function modalDeleteCat(id) {
             // $('#modalDeleteCat').modal('show');
             Swal.fire({
-                title: 'Apakah Anda yakin ingin menghapus kategori ini?',
+                title: 'Apakah Anda yakin ingin menghapus Tipe ini?',
                 text: "Anda tidak bisa mengembalikan perubahan ini!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -150,21 +160,21 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.post({
-                    type: 'POST',
-                    url: '{{ route('type.delete') }}',
-                    data: {
-                        '_token': '<?php echo csrf_token(); ?>',
-                        'id': id
-                    },
-                    success: function(data) {
-                        if (data.status == 'oke') {
-                            $('#tr_' + id).remove();
+                        type: 'POST',
+                        url: '{{ route('type.delete') }}',
+                        data: {
+                            '_token': '<?php echo csrf_token(); ?>',
+                            'id': id
+                        },
+                        success: function(data) {
+                            if (data.status == 'oke') {
+                                $('#tr_' + id).remove();
+                            }
                         }
-                    }
-                });
+                    });
                     Swal.fire(
                         'Berhasil Terhapus!',
-                        'Kategori berhasil terhapus.',
+                        'Tipe berhasil terhapus.',
                         'success'
                     )
                 }

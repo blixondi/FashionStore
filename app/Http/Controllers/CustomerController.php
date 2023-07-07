@@ -164,7 +164,7 @@ class CustomerController extends Controller
         $user->lname = $request->lname;
         $user->phone_number = $request->phone_number;
         $user->save();
-        return redirect()->route("admcustomer.index")->with("message", "Update Successfull");
+        return redirect()->route("admcustomer.index")->with("message", "Insert Successfull");
     }
 
     public function updateAdmStaff(Request $request, $id)
@@ -177,7 +177,7 @@ class CustomerController extends Controller
         $user->lname = $request->lname;
         $user->phone_number = $request->phone_number;
         $user->save();
-        return redirect()->route("admstaff.index")->with("message", "Update Successfull");
+        return redirect()->route("admstaff.index")->with("message", "Insert Successfull");
     }
 
     public function updateAdmOwner(Request $request, $id)

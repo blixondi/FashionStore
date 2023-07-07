@@ -4,8 +4,17 @@
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">Daftar Produk</h5>
         <div class="mb-2">
-        <button class="btn btn-success" onclick="create()">Tambah Produk</button>
-    </div>
+            @if (session('messege') == 'produk dengan nama yang sama sudah ada!')
+                <div class="alert alert-danger">
+                    <strong>{{ session('messege') }}</strong>
+                </div>
+            @elseif (session('messege') == 'Berhasil menambahkan')
+                <div class="alert alert-success">
+                    <strong>{{ session('messege') }}</strong>
+                </div>
+            @endif
+            <button class="btn btn-success" onclick="create()">Tambah Produk</button>
+        </div>
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="card-title fw-semibold mb-4">Daftar Produk</h5>
@@ -47,7 +56,7 @@
                                 <td class="border-bottom-0">
                                     <button type="button" id="btn-edit" onclick="edit({{ $p->id }})"
                                         class="btn btn-success m-1">Ubah</button>
-                                    <button type="button" onclick="modalDeleteCat({{ $p->id }})"
+                                    <button type="button" onclick="modalDeleteprod({{ $p->id }})"
                                         class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
                                 </td>
                             </tr>
@@ -114,10 +123,10 @@
             $("#form-store").submit();
         }
 
-        function modalDeleteCat(id) {
-            // $('#modalDeleteCat').modal('show');
+        function modalDeleteprod(id) {
+            // $('#modalDeleteprod').modal('show');
             Swal.fire({
-                title: 'Apakah Anda yakin ingin menghapus kategori ini?',
+                title: 'Apakah Anda yakin ingin menghapus produk ini?',
                 text: "Anda tidak bisa mengembalikan perubahan ini!",
                 icon: 'warning',
                 showCancelButton: true,
@@ -128,21 +137,21 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.post({
-                    type: 'POST',
-                    url: '{{ route('products.delete') }}',
-                    data: {
-                        '_token': '<?php echo csrf_token(); ?>',
-                        'id': id
-                    },
-                    success: function(data) {
-                        if (data.status == 'oke') {
-                            $('#tr_' + id).remove();
+                        type: 'POST',
+                        url: '{{ route('products.delete') }}',
+                        data: {
+                            '_token': '<?php echo csrf_token(); ?>',
+                            'id': id
+                        },
+                        success: function(data) {
+                            if (data.status == 'oke') {
+                                $('#tr_' + id).remove();
+                            }
                         }
-                    }
-                });
+                    });
                     Swal.fire(
                         'Berhasil Terhapus!',
-                        'Kategori berhasil terhapus.',
+                        'Produk berhasil terhapus.',
                         'success'
                     )
                 }
