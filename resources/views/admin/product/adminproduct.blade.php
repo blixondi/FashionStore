@@ -4,12 +4,11 @@
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">Daftar Produk</h5>
         <button class="btn btn-success" onclick="create()">Tambah Kategori</button>
-        @foreach ($category as $c)
-            <div class="card">
 
+            <div class="card">
                 <div class="card-body p-4">
                     <h5 class="card-title fw-semibold mb-4">{{ $c->name }}</h5>
-                    <table class="table text-nowrap mb-0 align-middle">
+                    <table class="table text-nowrap mb-0 align-middle" id="table">
                         <thead class="text-dark fs-4">
                             <tr>
                                 <th class="border-bottom-0">
@@ -25,9 +24,14 @@
                                     <h6 class="fw-semibold mb-0">Type</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Action</h6>
+                                    <h6 class="fw-semibold mb-0">Details</h6>
                                 </th>
-
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Edit</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Delete</h6>
+                                </th>
 
                             </tr>
                         </thead>
@@ -71,10 +75,7 @@
                     </table>
                 </div>
             </div>
-        @endforeach
     </div>
-
-
 
     <!-- Modal details -->
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
@@ -163,10 +164,11 @@
             </div>
         </div>
     </div>
-    {{-- Modal Create --}}
+
 @endsection
 @section('script')
     <script>
+        new DataTable('#table');
         function show(id) {
             $.get("{{ url('admin/product/show/edit_product') }}/" + id, {}, function(data, status) {
                 $("#modalTitle").html('Edit Produk');
