@@ -6,17 +6,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Create Category</h4>
+                    <h4 class="modal-title">Buat Kategori</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('categories.store') }}" method="post" id="formInsert">
                         @csrf
-                        Name : <input type="text" name="name" id="" value="{{ old('name') }}"><br><br>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Nama</label>
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="insertCategory()">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="insertCategory()">Simpan</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -30,14 +34,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Update Category</h4>
+                    <h4 class="modal-title">Ubah Kategori</h4>
                 </div>
                 <div class="modal-body">
                     Update Data 1
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="updateCategory()">Update</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="updateCategory()">Simpan</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -74,7 +78,7 @@
         {{-- <a href="{{route('categories.create')}}" style="font-size: 15px">Add New Category</a> --}}
         <div class="card">
             <div class="card-body p-4">
-                <table class="table text-nowrap mb-0 align-middle">
+                <table class="table text-nowrap mb-0 align-middle" border=1 id="table">
                     <thead class="text-dark fs-4">
                         <tr>
                             <th class="border-bottom-0">
@@ -84,16 +88,13 @@
                                 <h6 class="fw-semibold mb-0">Nama</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Created at</h6>
+                                <h6 class="fw-semibold mb-0">Tanggal Pembuatan</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Updated at</h6>
+                                <h6 class="fw-semibold mb-0">Tanggal Perubahan</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Edit</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Delete</h6>
+                                <h6 class="fw-semibold mb-0">Aksi</h6>
                             </th>
                         </tr>
                     </thead>
@@ -117,17 +118,10 @@
                                     </div>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <button class="btn btn-success"
-                                            onclick="modalEditCat({{ $c->id }})">Edit</button>
-                                    </div>
-                                </td>
-                                <td class="border-bottom-0">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <button class="btn btn-success"
-                                            onclick="if(confirm('Are you sure want to delete {{ $c->id }} - {{ $c->name }}?'))
-                                        modalDeleteCat({{ $c->id }})">Delete</button>
-                                    </div>
+                                    <button class="btn btn-success"
+                                        onclick="modalEditCat({{ $c->id }})">Ubah</button>
+                                    <button class="btn btn-danger" onclick="modalDeleteCat({{ $c->id }})"><i
+                                            class="ti ti-trash"></i></button>
                                 </td>
                             </tr>
                         @endforeach
@@ -160,19 +154,37 @@
 
         function modalDeleteCat(id) {
             // $('#modalDeleteCat').modal('show');
-            $.post({
-                type: 'POST',
-                url: '{{ route('categories.deleteData') }}',
-                data: {
-                    '_token': '<?php echo csrf_token(); ?>',
-                    'id': id
-                },
-                success: function(data) {
-                    if (data.status == 'oke') {
-                        $('#tr_' + id).remove();
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menghapus kategori ini?',
+                text: "Anda tidak bisa mengembalikan perubahan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya, saya yakin',
+                cancelButtonText: 'Batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post({
+                    type: 'POST',
+                    url: '{{ route('categories.deleteData') }}',
+                    data: {
+                        '_token': '<?php echo csrf_token(); ?>',
+                        'id': id
+                    },
+                    success: function(data) {
+                        if (data.status == 'oke') {
+                            $('#tr_' + id).remove();
+                        }
                     }
+                });
+                    Swal.fire(
+                        'Berhasil Terhapus!',
+                        'Kategori berhasil terhapus.',
+                        'success'
+                    )
                 }
-            });
+            })
         }
 
         function insertCategory() {
@@ -182,5 +194,7 @@
         function updateCategory() {
             $('#form-update').submit();
         }
+
+        new DataTable('#table');
     </script>
 @endsection
