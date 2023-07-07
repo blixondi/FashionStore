@@ -84,6 +84,14 @@
                                 <span class="hide-menu">Pelanggan</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admtransaction.index') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-list-details"></i>
+                                </span>
+                                <span class="hide-menu">Transaksi</span>
+                            </a>
+                        </li>
                         @can('is-owner')
 
                         <li class="nav-small-cap">

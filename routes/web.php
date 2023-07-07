@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,10 @@ Route::middleware(['can:is-admin'])->group(function () {
     Route::get('/admin/staff', [CustomerController::class, 'indexstaff'])->name('admstaff.index');
     Route::get('/admin/owner', [CustomerController::class, 'indexowner'])->name('admowner.index');
 
+    Route::get('/admin/transaction', [TransactionController::class, 'index'])->name('admtransaction.index');
+    Route::get('/admin/transaction/detail/{id}', [TransactionController::class, 'show']);
+    Route::post('/admin/transaction/delete', [TransactionController::class, 'destroy'])->name('transaksi.deleteData');
+
     Route::get('/admin/type', [TypeController::class, 'indexadmin'])->name('admtype.index');
     Route::get('/admin/type/editform/{type}', [TypeController::class, 'adminedit']);
     Route::post('/admin/deletetype', [TypeController::class, 'destroy'])->name('type.delete');
@@ -60,15 +65,15 @@ Route::middleware(['can:is-admin'])->group(function () {
 
 
     Route::post('/admin/create_customer', [CustomerController::class, 'storeCust'])->name('customers.storeCust');
-   
+
 
 
     Route::post('/admin/update_adm_customer/{id}', [CustomerController::class, 'updateAdmCust'])->name('customers.updateAdmCust');
- 
+
 
 
     Route::get('/admin/update_customer/{id}', [CustomerController::class, 'updateCust']);
-  
+
     Route::post('/admin/delete_category', [CategoryController::class, 'deleteData'])->name('categories.deleteData');
 
     Route::post('/admin/delete_customer', [CustomerController::class, 'deleteData'])->name('customers.deleteData');
@@ -81,10 +86,10 @@ Route::middleware(['can:is-admin'])->group(function () {
 Route::middleware(['can:is-owner'])->group(function(){
     Route::post('/admin/create_staff', [CustomerController::class, 'storeStaff'])->name('customers.storeStaff');
     Route::post('/admin/create_owner', [CustomerController::class, 'storeOwner'])->name('customers.storeOwner');
-    
+
     Route::post('/admin/update_adm_staff/{id}', [CustomerController::class, 'updateAdmStaff'])->name('customers.updateAdmStaff');
     Route::post('/admin/update_adm_owner/{id}', [CustomerController::class, 'updateAdmOwner'])->name('customers.updateAdmOwner');
-    
+
     Route::get('/admin/update_staff/{id}', [CustomerController::class, 'updateStaff']);
     Route::get('/admin/update_owner/{id}', [CustomerController::class, 'updateOwner']);
 });

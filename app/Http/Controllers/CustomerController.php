@@ -23,7 +23,7 @@ class CustomerController extends Controller
         if (session('cart')) {
             $user = User::find(Auth::user()->id);
             if($request->has('checkpoint')){
-                $user->point_member -= $request->point; 
+                $user->point_member -= $request->point;
                 $user->save();
             }
             $t = new Transaction();
@@ -78,6 +78,7 @@ class CustomerController extends Controller
     }
 
     #region
+
 
     function indexcust()
     {

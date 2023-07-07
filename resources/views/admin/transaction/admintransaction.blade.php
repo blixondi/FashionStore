@@ -2,183 +2,127 @@
 
 @section('content')
     <div class="card-body">
-        <h5 class="card-title fw-semibold mb-4">Daftar Tipe</h5>
-        @if (session('messege') == 'tipe dengan nama yang sama sudah ada!')
-            <div class="alert alert-danger">
-                <strong>{{ session('messege') }}</strong>
-            </div>
-        @elseif (session('messege') == 'Berhasil menambah tipe')
-            <div class="alert alert-success">
-                <strong>{{ session('messege') }}</strong>
-            </div>
-        @endif
-        <div class="mb-2">
-            <button class="btn btn-success" id="add-type" onclick="create()">Tambah Tipe</button>
-        </div>
-        <div class="card">
-            <div class="card-body p-4">
-                <table class="table text-nowrap mb-0 align-middle" id="table">
-                    <thead class="text-dark fs-4">
-                        <tr>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Id</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Nama</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">TanggalPembuatan</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">TanggalPerubahan</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Aksi</h6>
-                            </th>
+        <h5 class="card-title fw-semibold mb-4">Daftar Transaksi</h5>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($type as $t)
-                            <tr id="tr_{{ $t->id }}">
-                                <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">{{ $t->id }}</h6>
-                                </td>
-                                <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-1">{{ $t->name }}</h6>
-                                </td>
-                                <td class="border-bottom-0">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-success rounded-3 fw-semibold">{{ $t->created_at }}</span>
-                                    </div>
-                                </td>
-                                <td class="border-bottom-0">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <span class="badge bg-secondary rounded-3 fw-semibold">{{ $t->updated_at }}</span>
-                                    </div>
-                                </td>
-                                <td class="border-bottom-0">
-                                    <button type="button" id="btn-edit" onclick="edit({{ $t->id }})"
-                                        class="btn btn-success m-1">Ubah</button>
-                                    <button type="button" id="details" onclick="modalDeleteCat({{ $t->id }})"
-                                        class="btn btn-danger m-1"><i class="ti ti-trash"></i></button>
-                                </td>
-                            </tr>
-                        @endforeach
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h1 class="card-title">Riwayat Belanja</h1>
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Waktu Pembelian</th>
+                                    <th>Total Belanja</th>
+                                    <th>Poin yang Diperoleh</th>
+                                    <th>Pajak</th>
+                                    <th>Detail Pembelian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($transaction as $t)
+                                    <tr>
+                                        <td>{{ $t->created_at }}</td>
+                                        <td>@currency($t->total)</td>
+                                        <td>{{ $t->received_point }} poin</td>
+                                        <td>@currency($t->pajak)</td>
+                                        <td>
+                                            <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                                onclick="showTransaction({{ $t->id }})"
+                                                data-bs-target="#modal-transaction">Detail</a>
 
-
-                    </tbody>
-                </table>
+                                            <a class="btn btn-danger" onclick="modalDeleteTrans({{ $t->id }})"><i
+                                                    class="ti ti-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modal-transaction" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalLabel">Detail Transaksi</h1>
 
-                    <h4 class="modal-title">Tipe baru</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('type.store') }}" id="form-store" method="post">
-                        @method('POST')
-                        @csrf
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">nama</label>
-                            <input type="text" name="name" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="textHelp">
-                        </div>
-                    </form>
+                    ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="btn-insert" onclick="store()">Insert</button>
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-    {{-- modal edit --}}
-    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+
+    <div class="modal fade" id="modal-profile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Ubah Tipe</h5>
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h1 class="modal-title" id="exampleModalLabel">Ubah Profile</h1>
                 </div>
                 <div class="modal-body">
-
+                    ...
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btn-update"class="btn btn-secondary m-1" onclick="update()">Update</button>
-                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-@endsection
-@section('script')
-    <script>
-        new DataTable('#table');
 
-        function create() {
-            $("#modalCreate").modal("show");
-        }
 
-        function store() {
-            $("#form-store").submit();
-        }
+    <div class="card">
+    @endsection
+    @section('script')
+        <script>
+            function showTransaction(id) {
+                let idtransaction = id
+                $.get("{{ url('/admin/transaction/detail') }}/" + idtransaction, function(data) {
+                    $("#modal-transaction .modal-body").html(data);
+                    $("#modal-transaction").show();
+                });
+            }
 
-        function edit(id) {
-            updateId = id
-            $.get("{{ url('/admin/type/editform') }}/" + id, function(data) {
-                $("#modalEdit .modal-body").html(data)
-                $("#modalEdit").modal("show");
-            });
-        }
-
-        function update() {
-            $("#form-update").submit();
-        }
-
-        function modalDeleteCat(id) {
-            // $('#modalDeleteCat').modal('show');
-            Swal.fire({
-                title: 'Apakah Anda yakin ingin menghapus Tipe ini?',
-                text: "Anda tidak bisa mengembalikan perubahan ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Iya, saya yakin',
-                cancelButtonText: 'Batalkan'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.post({
-                        type: 'POST',
-                        url: '{{ route('type.delete') }}',
-                        data: {
-                            '_token': '<?php echo csrf_token(); ?>',
-                            'id': id
-                        },
-                        success: function(data) {
-                            if (data.status == 'oke') {
-                                $('#tr_' + id).remove();
+            function modalDeleteTrans(id) {
+                // $('#modalDeleteCust').modal('show');
+                Swal.fire({
+                    title: 'Apakah Anda yakin ingin menghapus transaksi ini?',
+                    text: "Anda tidak bisa mengembalikan perubahan ini!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Iya, saya yakin',
+                    cancelButtonText: 'Batalkan'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.post({
+                            type: 'POST',
+                            url: '{{ route('transaksi.deleteData') }}',
+                            data: {
+                                '_token': '<?php echo csrf_token(); ?>',
+                                'id': id
+                            },
+                            success: function(data) {
+                                if (data.status == 'oke') {
+                                    $('#tr_' + id).remove();
+                                }
                             }
-                        }
-                    });
-                    Swal.fire(
-                        'Berhasil Terhapus!',
-                        'Tipe berhasil terhapus.',
-                        'success'
-                    )
-                }
-            })
-        }
-    </script>
-@endsection
+                        });
+                        Swal.fire(
+                            'Berhasil Terhapus!',
+                            'Transaksi berhasil terhapus.',
+                            'success'
+                        )
+                    }
+                })
+            }
+        </script>
+    @endsection
