@@ -78,7 +78,7 @@
         <button class="btn btn-success" onclick="modalCreateCust()">Tambah Customer</button>
         <div class="card">
             <div class="card-body p-4">
-                <table class="table text-nowrap mb-0 align-middle">
+                <table class="table text-nowrap mb-0 align-middle" border=1 id="admcust-table">
                     <thead class="text-dark fs-4">
                         <tr>
                             <th class="border-bottom-0">
@@ -204,5 +204,7 @@
         function updateCustomer() {
             $('#form-update').submit();
         }
+
+        $("#admcust-table").DataTable();
     </script>
 @endsection
