@@ -29,6 +29,10 @@
             <td>{{$transaction->received_point}}</td>
         </tr>
         <tr>
+            <td colspan="4">Pajak</td>
+            <td>@currency($transaction->pajak)</td>
+        </tr>
+        <tr>
             <td colspan="4">Total Sesudah Pajak</td>
             <td>@currency($transaction->total)</td>
         </tr>

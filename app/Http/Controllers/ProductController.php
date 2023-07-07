@@ -69,6 +69,7 @@ class ProductController extends Controller
         }
         if (!isset($cart[$product->id])) {
             $cart[$product->id] = [
+                "id" => $product->id,
                 "name" => $product->name,
                 "brand" => $product->brand,
                 "price" => $product->price,
@@ -77,7 +78,7 @@ class ProductController extends Controller
                 "dimension" => $product->dimension,
             ];
         } else {
-            $cart[$product->id]['quantity'] = $request->qty;
+            $cart[$product->id]['quantity'] += $request->qty;
         }
         session()->put('cart', $cart);
         return response()->json([
