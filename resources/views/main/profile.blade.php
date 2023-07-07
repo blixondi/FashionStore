@@ -1,24 +1,22 @@
 @extends('layouts.shop')
 @section("content")
 
-<div class="modal fade" id="modalTransaction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Detail Transaksi</h4>
-                </div>
-                <div class="modal-body">
-                    Update Data 1
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
+<div class="modal fade" id="modal-transaction" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLabel">Detail Transaksi</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <!-- /.modal-dialog -->
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
+  </div>
 
 <div class="card">
     <div class="card-body">
@@ -61,7 +59,11 @@
                                                 <td>@currency($t->pajak)</td>
                                                 <td>@currency($t->total)</td>
                                                 <td>{{$t->created_at}}</td>
-                                                <td><button id="testmodal" class="btn btn-primary" onclick="showTransaction({{$t->id}})">Detail</button></td>
+                                                <td>
+                                                    {{-- <a href="#" class="btn btn-primary rounded-pill"
+                                                    data-bs-toggle="modal" data-bs-target="#modal-transaction">Detail</a> --}}
+                                                    <a href="#" class="btn btn-primary rounded-pill"
+                                                    data-bs-toggle="modal" onclick="showTransaction({{$t->id}})" data-bs-target="#modal-transaction">Detail</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -77,16 +79,11 @@
 
 @section('js')
 <script>
-    $(document).ready(function () {
-        $("#testmodal").on("click",function(){
-            $("#modalTransaction").show()
-        })
-    });
     function showTransaction(id){
         let idtransaction = id
         $.get("{{url('/transaction')}}/" + idtransaction, function(data){
-            // $("#modalTransaction .modal-body").html(data);
-            $("#modalTransaction").show()
+            $("#modal-transaction .modal-body").html(data);
+            $("#modal-transaction").show()
         });
     }
 </script>
