@@ -35,7 +35,7 @@
       </div>
       <div class="mb-2">
         <label for="exampleInputEmail1" class="form-label">description</label>
-        <input type="text" name="description" class="form-control" id="exampleInputEmail1" aria-describedby="textHelp">
+        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
       </div>
       {{-- <div class="mb-2">
         <label for="exampleInputEmail1" class="form-label">image_url</label>
