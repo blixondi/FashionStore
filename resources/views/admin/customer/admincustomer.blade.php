@@ -6,22 +6,46 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Create Customer</h4>
+                    <h4 class="modal-title">Buat Pelanggan</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('customers.store') }}" method="post" id="formInsert">
                         @csrf
-                        Username : <input type="text" name="username" id="" value="{{ old('username') }}"><br><br>
-                        Password : <input type="text" name="password" id="" value="{{ old('password') }}"><br><br>
-                        Email : <input type="text" name="email" id="" value="{{ old('email') }}"><br><br>
-                        First Name : <input type="text" name="fname" id="" value="{{ old('fname') }}"><br><br>
-                        Last Name : <input type="text" name="lname" id="" value="{{ old('lname') }}"><br><br>
-                        Phone Number : <input type="text" name="phone_number" id="" value="{{ old('phone_number') }}"><br><br>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Password</label>
+                            <input type="text" name="password" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="text" name="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Nama Depan</label>
+                            <input type="text" name="fname" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Nama Belakang</label>
+                            <input type="text" name="lname" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
+                        <div class="mb-2">
+                            <label for="exampleInputEmail1" class="form-label">Nomor Telepon</label>
+                            <input type="text" name="phone_number" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="textHelp">
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="insertCustomer()">Submit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="insertCustomer()">Simpan</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -35,14 +59,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Update Customer</h4>
+                    <h4 class="modal-title">Ubah Pelanggan</h4>
                 </div>
                 <div class="modal-body">
                     Update Data 1
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="updateCustomer()">Update</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="updateCustomer()">Simpan</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Keluar</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -75,10 +99,10 @@
 
     <div class="card-body">
         <h5 class="card-title fw-semibold mb-4">Daftar Customer</h5>
-        <button class="btn btn-success" onclick="modalCreateCust()">Tambah Customer</button>
+        <button class="btn btn-success" onclick="modalCreateCust()">Tambah Pelanggan</button>
         <div class="card">
             <div class="card-body p-4">
-                <table class="table text-nowrap mb-0 align-middle" border=1 id="admcust-table">
+                <table class="table text-nowrap mb-0 align-middle" border=1 id="table">
                     <thead class="text-dark fs-4">
                         <tr>
                             <th class="border-bottom-0">
@@ -100,10 +124,7 @@
                                 <h6 class="fw-semibold mb-0">Point Member</h6>
                             </th>
                             <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Edit</h6>
-                            </th>
-                            <th class="border-bottom-0">
-                                <h6 class="fw-semibold mb-0">Delete</h6>
+                                <h6 class="fw-semibold mb-0">Aksi</h6>
                             </th>
                         </tr>
                     </thead>
@@ -129,17 +150,10 @@
                                     <h6 class="fw-semibold mb-1">{{ $u->point_member }}</h6>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <button class="btn btn-success"
-                                            onclick="modalEditCust({{ $u->id }})">Edit</button>
-                                    </div>
-                                </td>
-                                <td class="border-bottom-0">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <button class="btn btn-success"
-                                            onclick="if(confirm('Are you sure want to delete {{ $u->id }} - {{ $u->username }}?'))
-                                        modalDeleteCust({{ $u->id }})">Delete</button>
-                                    </div>
+                                    <button class="btn btn-success"
+                                        onclick="modalEditCust({{ $u->id }})">Edit</button>
+                                    <button class="btn btn-danger" onclick="modalDeleteCust({{ $u->id }})"><i
+                                            class="ti ti-trash"></i></button>
                                 </td>
                                 {{-- <td class="border-bottom-0">
                                     <div class="d-flex align-items-center gap-2">
@@ -182,19 +196,37 @@
 
         function modalDeleteCust(id) {
             // $('#modalDeleteCust').modal('show');
-            $.post({
-                type: 'POST',
-                url: '{{ route('customers.deleteData') }}',
-                data: {
-                    '_token': '<?php echo csrf_token(); ?>',
-                    'id': id
-                },
-                success: function(data) {
-                    if (data.status == 'oke') {
-                        $('#tr_' + id).remove();
-                    }
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menghapus pelanggan ini?',
+                text: "Anda tidak bisa mengembalikan perubahan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya, saya yakin',
+                cancelButtonText: 'Batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post({
+                        type: 'POST',
+                        url: '{{ route('customers.deleteData') }}',
+                        data: {
+                            '_token': '<?php echo csrf_token(); ?>',
+                            'id': id
+                        },
+                        success: function(data) {
+                            if (data.status == 'oke') {
+                                $('#tr_' + id).remove();
+                            }
+                        }
+                    });
+                    Swal.fire(
+                        'Berhasil Terhapus!',
+                        'Pelanggan berhasil terhapus.',
+                        'success'
+                    )
                 }
-            });
+            })
         }
 
         function insertCustomer() {
@@ -205,6 +237,7 @@
             $('#form-update').submit();
         }
 
-        $("#admcust-table").DataTable();
+        // $("#admcust-table").DataTable();
+        new DataTable('#table');
     </script>
 @endsection

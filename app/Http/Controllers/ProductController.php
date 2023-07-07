@@ -93,6 +93,28 @@ class ProductController extends Controller
             "message" => "sukses menambahkan $product->name ke cart",
         ]);
     }
+    public function updatecart(Request $request)
+    {
+        $cart = session('cart');
+        foreach($cart as $id => $item){
+            $qty = "qty".$id;
+            $cart[$id]['quantity'] = $request->$qty;
+        }
+        session()->put('cart',$cart);
+        return redirect()->route('cart');
+    }
+    public function deletecart(Product $product)
+    {
+        $cart = session('cart');
+        foreach($cart as $key => $value){
+            if($value['id'] == $product->id){
+                unset($cart[$key]);
+            }
+        }
+        dd($cart);
+        session()->push('cart',$cart);
+        return response()->json(['status'=>'oke','pesan'=>'berhasil hapus item']);
+    }
 
     /**
      * Store a newly created resource in storage.
