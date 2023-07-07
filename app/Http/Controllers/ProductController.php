@@ -41,6 +41,11 @@ class ProductController extends Controller
         $product = Product::where('categories_id', 3)->get();
         return view('main.productlist', ["product" => $product, "title" => "Anak", "subtitle" => "Temukan Fashion anak yang cocok untuk anda"]);
     }
+    public function index_promo()
+    {
+        $product = Product::where('categories_id', 4)->get();
+        return view('main.productlist', ["product" => $product, "title" => "Tukar Poin", "subtitle" => "Tukarkan poinmu dengan berbagia jenis barang yang lucu"]);
+    }
 
     public function indexadmin()
     {
