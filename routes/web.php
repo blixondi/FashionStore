@@ -64,10 +64,12 @@ Route::resource("customers", CustomerController::class);
 Route::resource("type", TypeController::class);
 
 // Route::get('/product',[ProductController::class,'indexcustomer'])->name('custproduct.index');
-Route::post("/product/addcart/{product}", [ProductController::class, "addcart"]);
 
-Route::get('/cart', [CustomerController::class, "cart"]);
+Route::post("/product/addcart/{product}", [ProductController::class, "addcart"]);
+Route::get('/cart', [CustomerController::class, "cart"])->name('cart');
+Route::post('/deletecart/{item}', [ProductController::class, "deletecart"])->name('deletecart');
 Route::post('/checkout', [CustomerController::class, "checkout"]);
+<<<<<<< Updated upstream
 
 
 Route::get('/profile', [CustomerController::class, "checkTransaction"])->name('profile');
@@ -75,5 +77,9 @@ Route::get('/profile/edit', [CustomerController::class, "editProfile"]);
 Route::put('/profile/update', [CustomerController::class, "updateProfile"]);
 
 
+=======
+Route::get('/profile', [CustomerController::class, "checkTransaction"]);
+Route::post('/updatecart',[ProductController::class,'updatecart']);
+>>>>>>> Stashed changes
 
 Route::get('/transaction/{id}', [CustomerController::class, "detailTransaction"]);
