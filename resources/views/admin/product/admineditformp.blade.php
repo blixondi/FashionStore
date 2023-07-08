@@ -9,10 +9,15 @@
                         <label for="exampleInputEmail1" class="form-label">Kategori</label>
                         <select class="form-select" name="category">
                             @foreach ($category as $c)
-                                <option value="{{ $c->id }}"
-                                    {{ $c->id == $product->category_id ? 'selected' : '' }}>
-                                    {{ $c->name }}
-                                </option>
+                                @if ($c->id == $product->categories_id)
+                                    <option value="{{ $c->id }}" selected>
+                                        {{ $c->name }}
+                                    </option>
+                                @else
+                                    <option value="{{ $c->id }}">
+                                        {{ $c->name }}
+                                    </option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -20,7 +25,15 @@
                         <label for="exampleInputEmail1" class="form-label">Tipe</label>
                         <select class="form-select" name="type">
                             @foreach ($types as $t)
-                                <option value="{{ $t->id }}">{{ $t->name }}</option>
+                                @if ($t->id == $product->types_id)
+                                    <option value="{{ $t->id }}" selected>
+                                        {{ $t->name }}
+                                    </option>
+                                @else
+                                    <option value="{{ $t->id }}">
+                                        {{ $t->name }}
+                                    </option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
