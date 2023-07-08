@@ -37,7 +37,7 @@
             <div class="project item col-md-6 col-xl-4">
                 <figure class="rounded mb-6">
                     <a href="{{route('products.show',$p->id)}}">
-                        <img src="{{asset("/assets/img/products/".$p->img_url)}}" alt="" />
+                        <img src="{{asset("/assets/img/products/".$p->img_url)}}" alt="" class="img-fluid" />
                     </a>
                 </figure>
                 <div class="post-header">
