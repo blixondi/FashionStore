@@ -44,9 +44,10 @@
             <!-- /column -->
             <div class="col-lg-6">
               <div class="post-header mb-5">
-                <h2 class="post-title display-5"><a href="./shop-product.html" class="link-dark">{{Str::ucfirst($product->name)}}</a></h2>
-                <h4 class="post-title display-6"><a href="./shop-product.html" class="link-dark">{{$product->category->name}}</a></h4>
-                <h4 class="post-title display-8"><a href="./shop-product.html" class="link-dark">{{$product->type->name}}</a></h4>
+                <h2 class="post-title display-5">{{Str::ucfirst($product->name)}}</h2>
+                <h4 class="post-title display-6">{{$product->category->name}}</h4>
+                <h4 class="post-title display-8">{{$product->type->name}}</h4>
+                <h5 class="post-title display-8">Dimensi : {{Str::ucfirst($product->dimension)}}</h5>
                 <p class="price fs-20 mb-2"><span class="amount">@currency($product->price)</span></p>
               </div>
               <!-- /.post-header -->

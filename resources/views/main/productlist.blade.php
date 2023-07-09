@@ -47,6 +47,9 @@
                 <div class="d-flex flex-row align-items-center justify-content-between mb-2">
                     <div class="post-category text-ash mb-0">{{$p->type->name}}</div>
                 </div>
+                <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                    <div class="post-category text-ash mb-0">Dimensi {{$p->dimension}}</div>
+                </div>
                 <h2 class="post-title h3 fs-22"><a href="{{route('products.show',$p->id)}}" class="link-dark">{{Str::ucfirst($p->name)}}</a></h2>
                 <p class="price"><span class="amount">@currency($p->price)</span></p>
                 </div>
